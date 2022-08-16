@@ -7,10 +7,7 @@ import Search from "../Components/Search";
 import { companies } from "../Seed";
 
 const Interviews = () => {
-	const [interviews, setInterviews] = useState([
-		{ id: 1, company: "Infosys", time: Date.now() },
-		{ id: 2, company: "Haven", time: Date.now() },
-	]);
+	const [interviews, setInterviews] = useState(null);
 
 	useEffect(() => {
 		// add API call later
@@ -31,6 +28,7 @@ const Interviews = () => {
 										key={data.id}
 										serial={index + 1}
 										interview={data}
+										startsAt={data.rounds[data.rounds.length - 1].startTime}
 									/>
 								))}
 						</ul>
