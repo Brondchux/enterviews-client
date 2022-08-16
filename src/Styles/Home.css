@@ -1,0 +1,8 @@
+.uac-wrapper {
+	display: flex;
+	min-height: 80vh;
+	text-align: center;
+}
+.uac-copy {
+	margin: auto;
+}
