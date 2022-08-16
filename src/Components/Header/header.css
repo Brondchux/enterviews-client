@@ -1,0 +1,41 @@
+header {
+	background-color: #daa520;
+	color: #000;
+	min-height: 15vh;
+	display: grid;
+	grid-template-columns: 1fr;
+}
+.brand {
+	margin: auto;
+	text-align: center;
+}
+.brand h1 {
+	margin: 0;
+}
+.brand p {
+	font-size: 1rem;
+	margin: 0;
+	color: #fff;
+}
+nav {
+	background-color: #555;
+}
+nav ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+}
+nav ul li {
+	text-align: center;
+}
+nav ul li a {
+	color: #daa520;
+	font-size: 2rem;
+	font-weight: bold;
+}
+nav ul li a:hover,
+.active {
+	text-decoration: underline;
+}
