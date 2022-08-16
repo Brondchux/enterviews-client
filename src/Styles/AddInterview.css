@@ -1,0 +1,11 @@
+.add-interview-heading {
+	padding-top: 2rem;
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+	text-align: center;
+}
+.add-interview-form {
+	padding-top: 1rem;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+}

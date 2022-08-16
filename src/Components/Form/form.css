@@ -1,0 +1,44 @@
+.form-box {
+	grid-column: 2/3;
+}
+form {
+	background-color: #eee;
+	padding: 15px;
+	border-radius: 15px;
+}
+form label {
+	display: block;
+	padding-top: 1rem;
+}
+.date-time {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 0.7rem;
+}
+.btn {
+	background-color: #daa520;
+	border: 0;
+	cursor: pointer;
+	border-radius: 5px;
+	margin: 15px auto;
+}
+.mini-btn {
+	border: 1px solid #222;
+	border-radius: 5px;
+	font-size: 1rem;
+	cursor: pointer;
+}
+.alert {
+	font-size: 1rem;
+	text-align: center;
+	color: #fff;
+	padding: 1rem;
+}
+.error {
+	color: #e41313;
+	border: 1px solid #e41313;
+}
+.success {
+	color: #0b730b;
+	border: 1px solid #0b730b;
+}
