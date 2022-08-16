@@ -7,13 +7,13 @@ const Header = () => {
 
 	return (
 		<header>
-			<div class="brand">
+			<div className="brand">
 				<Link to={{ pathname: "/" }}>
 					<h1>{constants.BRAND}</h1>
 				</Link>
 				<p>keep track your interviews</p>
 			</div>
-			<nav class="navigation">
+			<nav>
 				<ul>
 					<li>
 						<NavLink

@@ -1,3 +1,4 @@
+import "./footer.css";
 import constants from "../../Utils/constants";
 
 const Footer = () => {

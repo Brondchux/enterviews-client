@@ -1,0 +1,20 @@
+.search-box {
+	margin-bottom: 2rem;
+	display: grid;
+	grid-template-columns: 11fr 1fr;
+}
+.search-box div:first-child input {
+	border-radius: 10px 0 0 10px;
+	border: 1px solid #555;
+}
+.search-box div:last-child {
+	background-color: #daa520;
+	display: flex;
+	margin: 5px 0;
+	border-radius: 0 10px 10px 0;
+	cursor: pointer;
+}
+.search-box div:last-child span {
+	margin: auto;
+	font-size: 2rem;
+}
