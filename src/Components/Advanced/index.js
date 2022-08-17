@@ -1,3 +1,5 @@
+import "./advanced.css";
+
 const Advanced = () => {
 	return (
 		<div id="interview-advanced" className="">

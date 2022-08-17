@@ -1,7 +1,7 @@
 const Round = ({ round }) => {
 	console.log(round);
 	return (
-		<li className="serial-future-line">
+		<li className="interview-li serial-future-line">
 			<div className="serial serial-future">
 				<span>R1</span>
 			</div>

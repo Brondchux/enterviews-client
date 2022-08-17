@@ -62,7 +62,7 @@ const Interview = () => {
 								</Link>
 								)
 							</h3>
-							<ul id="interview-rounds">
+							<ul id="interview-rounds" className="interviews-ul">
 								{interview.rounds.map((round, index) => (
 									<Round key={index} round={round} />
 								))}

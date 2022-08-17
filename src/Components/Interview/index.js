@@ -1,4 +1,3 @@
-import "./interview.css";
 import { formatDateTime, dynamicBgColor } from "../../Utils/mixins";
 import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";

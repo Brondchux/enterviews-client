@@ -3,9 +3,3 @@
 	display: grid;
 	grid-template-columns: repeat(0, 1fr);
 }
-.interviews-ul {
-	list-style: none;
-	padding: 0;
-	margin: 0;
-	margin-bottom: 2rem;
-}
