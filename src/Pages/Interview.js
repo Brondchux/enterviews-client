@@ -1,5 +1,5 @@
 import "../Styles/Interview.css";
-import { Fragment, useEffect } from "react";
+import { Fragment, useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { actions } from "../Store";
@@ -15,11 +15,11 @@ const Interview = () => {
 	const interview = useSelector((state) => state.interview.interview);
 	const interviews = useSelector((state) => state.interviews.interviews);
 
-	const fetchInterviewData = () => {
+	const fetchInterviewData = useCallback(() => {
 		if (!interviews) return;
 		const interviewData = interviews.find((data) => data.id === parseInt(id));
 		dispatch(actions.interview.setInterview(interviewData));
-	};
+	}, [id, interviews, dispatch]);
 
 	const noInterviewFound = (
 		<section className="an-interview">
@@ -35,7 +35,7 @@ const Interview = () => {
 			</div>
 		</section>
 	);
-	useEffect(() => fetchInterviewData(), [id]);
+	useEffect(() => fetchInterviewData(), [fetchInterviewData]);
 
 	return (
 		<Fragment>

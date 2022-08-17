@@ -15,7 +15,7 @@ const Interviews = () => {
 	useEffect(() => {
 		// add API call later
 		dispatch(actions.interviews.setInterviews(companies));
-	}, []);
+	}, [dispatch]);
 
 	return (
 		<Fragment>

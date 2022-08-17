@@ -1,6 +1,6 @@
 import "./interview.css";
 import { formatDateTime, dynamicBgColor } from "../../Utils/mixins";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 const Interview = ({ interview, serial, startsAt }) => {
 	const [colorCode, setColorCode] = useState(1);
@@ -9,11 +9,12 @@ const Interview = ({ interview, serial, startsAt }) => {
 		2: "future",
 		3: "present",
 	};
-	const dynamicBgColorHandler = () => setColorCode(dynamicBgColor(startsAt));
+	const dynamicBgColorHandler = useCallback(
+		() => setColorCode(dynamicBgColor(startsAt)),
+		[startsAt]
+	);
 
-	useEffect(() => {
-		dynamicBgColorHandler();
-	}, [startsAt]);
+	useEffect(() => dynamicBgColorHandler(), [dynamicBgColorHandler]);
 
 	return (
 		<li className={`interview-li serial-${colors[colorCode]}-line`}>
