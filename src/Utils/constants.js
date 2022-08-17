@@ -6,6 +6,8 @@ const constants = {
 	DURATION: "duration",
 	COMPLETED: "isCompleted",
 	MAC: "Mark as complete",
+	STILL_ACTIVE: "Interview in process",
+	NOT_ACTIVE: "Interview ended",
 	PRIORITY: {
 		THREE: 3,
 		TWO: 2,

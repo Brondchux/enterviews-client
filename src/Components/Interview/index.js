@@ -1,6 +1,7 @@
 import "./interview.css";
 import { formatDateTime, dynamicBgColor } from "../../Utils/mixins";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 const Interview = ({ interview, serial, startsAt }) => {
 	const [colorCode, setColorCode] = useState(1);
 	const colors = {
@@ -21,7 +22,9 @@ const Interview = ({ interview, serial, startsAt }) => {
 			</div>
 			<div className="content">
 				<p data-id={interview.data} data-company={interview.company}>
-					{interview.company}
+					<Link to={{ pathname: `/interview/${interview.id}` }}>
+						{interview.company}
+					</Link>
 				</p>
 				<span>{formatDateTime(startsAt)}</span>
 			</div>

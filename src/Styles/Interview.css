@@ -1,0 +1,9 @@
+.an-interview {
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+}
+.advanced-btns {
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	gap: 1rem;
+}
