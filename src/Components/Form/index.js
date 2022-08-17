@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import "./form.css";
 
 const Form = () => {
+	const [rounds, setRounds] = useState(null);
 	const [formState, setFormState] = useState({
 		company: "",
 		role: "Software engineer",
-		round: "",
+		round: "1",
 		date: "",
 		time: "",
 		duration: "",
@@ -13,7 +14,6 @@ const Form = () => {
 
 	const changeHandler = (e) => {
 		const { name, value } = e.target;
-
 		setFormState({
 			...formState,
 			[name]: value,
@@ -23,7 +23,29 @@ const Form = () => {
 	const submitHandler = (e) => {
 		e.preventDefault();
 		console.log(formState);
+		setFormState({
+			company: "",
+			role: "Software engineer",
+			round: "1",
+			date: "",
+			time: "",
+			duration: "",
+		});
 	};
+
+	const roundOptions = () => {
+		const options = [];
+		let i = 1;
+		while (i < 10) {
+			options[i] = <option key={i}>{i}</option>;
+			i++;
+		}
+		setRounds(options);
+	};
+
+	useEffect(() => {
+		roundOptions();
+	}, []);
 
 	return (
 		<div className="form-box">
@@ -60,9 +82,7 @@ const Form = () => {
 						onChange={changeHandler}
 						className="form-control"
 					>
-						<option defaultValue="1">1</option>
-						<option>2</option>
-						<option>3</option>
+						{rounds && rounds}
 					</select>
 				</div>
 				<div className="date-time">
