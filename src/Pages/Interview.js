@@ -2,26 +2,35 @@ import "../Styles/Interview.css";
 import { Fragment, useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
+import { findDataById } from "../Utils/mixins";
 import { actions } from "../Store";
-import Footer from "../Components/Footer";
 import Header from "../Components/Header";
-import constants from "../Utils/constants";
+import Footer from "../Components/Footer";
 import List from "../Components/List";
 import Advanced from "../Components/Advanced";
+import constants from "../Utils/constants";
 
 const Interview = () => {
 	const { id } = useParams();
 	const dispatch = useDispatch();
-	const interview = useSelector((state) => state.interview.interview);
 	const interviews = useSelector((state) => state.interviews.interviews);
+	const interview = useSelector((state) => state.interview.interview);
 
-	const fetchInterviewData = useCallback(() => {
-		if (!interviews) return;
-		const interviewData = interviews.find((data) => data.id === parseInt(id));
-		dispatch(actions.interview.setInterview(interviewData));
+	const fetchInterviewData = useCallback(async () => {
+		/* TODO: Store this found interview object as string value to this "id" 
+		in localStorage so that when the user refreshes this or any other page 
+		and there is an "id", I can use the "id" to retrieve the complete object 
+		from localStorage. Make sure to add the fetch from localStorage function 
+		in a component shared by all files e.g App, Header, Footer */
+		const data = await findDataById(interviews, id);
+		dispatch(actions.interview.setInterview(data));
+		// Implement store in LS here!
+		// Storage name EVS-Interview {interviewId: {...values}}
 	}, [id, interviews, dispatch]);
 
-	useEffect(() => fetchInterviewData(), [fetchInterviewData]);
+	useEffect(() => {
+		fetchInterviewData();
+	}, [fetchInterviewData]);
 
 	const noInterviewFound = (
 		<section className="an-interview">

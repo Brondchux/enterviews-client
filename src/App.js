@@ -17,7 +17,7 @@ const App = () => {
 					<Route path="/interviews" element={<Interviews />} />
 					<Route path="/interview/:id" element={<Interview />} />
 					<Route path="/add-interview" element={<AddInterview />} />
-					<Route path="/add-rounds/:interviewId" element={<AddInterview />} />
+					<Route path="/add-rounds/:id" element={<AddInterview />} />
 					<Route path="*" element={<NotFound />} />
 				</Routes>
 			</Router>
