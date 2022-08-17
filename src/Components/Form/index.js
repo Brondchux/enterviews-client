@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import "./form.css";
 
-const Form = () => {
+const Form = ({ interviewData = null }) => {
 	const [rounds, setRounds] = useState(null);
+	const [isReadOnly, setIsReadOnly] = useState(false);
 	const [formState, setFormState] = useState({
 		company: "",
 		role: "Software engineer",
@@ -20,32 +21,37 @@ const Form = () => {
 		});
 	};
 
-	const submitHandler = (e) => {
-		e.preventDefault();
-		console.log(formState);
-		setFormState({
-			company: "",
-			role: "Software engineer",
-			round: "1",
-			date: "",
-			time: "",
-			duration: "",
-		});
-	};
-
-	const roundOptions = () => {
+	const roundOptions = (begin = 1, end = 10) => {
 		const options = [];
-		let i = 1;
-		while (i < 10) {
+		let i = begin;
+		while (i <= end) {
 			options[i] = <option key={i}>{i}</option>;
 			i++;
 		}
 		setRounds(options);
 	};
+	useEffect(() => roundOptions(), []);
 
-	useEffect(() => {
-		roundOptions();
-	}, []);
+	const populateFields = useCallback(() => {
+		if (!interviewData) return;
+		const newRoundCount = interviewData.rounds.length + 1;
+		roundOptions(newRoundCount, newRoundCount);
+		setIsReadOnly(true);
+		setFormState({
+			company: interviewData.company,
+			role: interviewData.role,
+			round: newRoundCount,
+			date: "",
+			time: "",
+			duration: "",
+		});
+	}, [interviewData]);
+	useEffect(() => populateFields(), [populateFields]);
+
+	const submitHandler = (e) => {
+		e.preventDefault();
+		console.log(formState);
+	};
 
 	return (
 		<div className="form-box">
@@ -60,6 +66,7 @@ const Form = () => {
 						onChange={changeHandler}
 						className="form-control"
 						type="text"
+						readOnly={isReadOnly}
 					/>
 				</div>
 				<div>
@@ -71,6 +78,7 @@ const Form = () => {
 						onChange={changeHandler}
 						className="form-control"
 						type="text"
+						readOnly={isReadOnly}
 					/>
 				</div>
 				<div>

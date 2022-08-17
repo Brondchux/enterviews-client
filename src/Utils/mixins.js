@@ -44,3 +44,8 @@ export const sortDesc = (arr = []) => {
 	});
 	return sorted;
 };
+
+export const getInterviewById = (arr, id) => {
+	if (!arr || !id) return;
+	return arr.find((data) => parseInt(data.id) === parseInt(id));
+};

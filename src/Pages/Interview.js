@@ -21,6 +21,8 @@ const Interview = () => {
 		dispatch(actions.interview.setInterview(interviewData));
 	}, [id, interviews, dispatch]);
 
+	useEffect(() => fetchInterviewData(), [fetchInterviewData]);
+
 	const noInterviewFound = (
 		<section className="an-interview">
 			<div className="centered">
@@ -35,7 +37,6 @@ const Interview = () => {
 			</div>
 		</section>
 	);
-	useEffect(() => fetchInterviewData(), [fetchInterviewData]);
 
 	return (
 		<Fragment>
@@ -57,7 +58,10 @@ const Interview = () => {
 						<div>
 							<h3>
 								Rounds - (
-								<Link className="link" to={{ pathname: "/add-interview" }}>
+								<Link
+									className="link"
+									to={{ pathname: `/add-rounds/${interview.id}` }}
+								>
 									New round?
 								</Link>
 								)
