@@ -6,7 +6,7 @@ import { actions } from "../Store";
 import Footer from "../Components/Footer";
 import Header from "../Components/Header";
 import constants from "../Utils/constants";
-import Round from "../Components/Round";
+import List from "../Components/List";
 import Advanced from "../Components/Advanced";
 
 const Interview = () => {
@@ -63,9 +63,16 @@ const Interview = () => {
 								)
 							</h3>
 							<ul id="interview-rounds" className="interviews-ul">
-								{interview.rounds.map((round, index) => (
-									<Round key={index} round={round} />
-								))}
+								{interview.rounds &&
+									interview.rounds.length &&
+									interview.rounds.map((round, index) => (
+										<List
+											key={index}
+											interviewId={interview.id}
+											round={round}
+											type={constants.LIST.ROUND}
+										/>
+									))}
 							</ul>
 						</div>
 						<Advanced />

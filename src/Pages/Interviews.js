@@ -1,12 +1,13 @@
 import "../Styles/Interviews.css";
 import { Fragment, useEffect } from "react";
-import Interview from "../Components/Interview";
+import List from "../Components/List";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import Search from "../Components/Search";
 import { companies } from "../Seed";
 import { useDispatch, useSelector } from "react-redux";
 import { actions } from "../Store";
+import constants from "../Utils/constants";
 
 const Interviews = () => {
 	const dispatch = useDispatch();
@@ -27,8 +28,9 @@ const Interviews = () => {
 						<ul id="interview-list" className="interviews-ul">
 							{interviews &&
 								interviews.map((data, index) => (
-									<Interview
+									<List
 										key={data.id}
+										type={constants.LIST.COMPANY}
 										serial={index + 1}
 										interview={data}
 										startsAt={data.rounds[data.rounds.length - 1].startTime}
