@@ -14,7 +14,7 @@ const Interviews = () => {
 	const interviews = useSelector((state) => state.interviews.interviews);
 
 	useEffect(() => {
-		// add API call later
+		// TODO: add API call later
 		dispatch(actions.interviews.setInterviews(companies));
 	}, [dispatch]);
 

@@ -1,23 +1,22 @@
 import { useCallback, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink, useParams } from "react-router-dom";
+import { actions } from "../../Store";
 import constants from "../../Utils/constants";
 import "./header.css";
 
 const Header = () => {
+	const dispatch = useDispatch();
 	const activeClassName = "active";
 	const interview = useSelector((state) => state.interview.interview);
 	const { id } = useParams();
 
 	const fetchDataFromLocalStorage = useCallback(() => {
 		if (!id) return;
-		if (id && interview) {
-			return console.log("I don't need to fetch from LS for id:", id);
-			// TODO: Update me to "if (id && interview) return;" after implementing LS
-		}
+		if (id && interview) return;
 		if (id && !interview) {
-			return console.log("Must fetch data from LS for id:", id);
-			// dispatch(actions.interview.setInterview(THE DATA HERE))
+			const lsData = localStorage.getItem(constants.LSCODE);
+			lsData && dispatch(actions.interview.setInterview(JSON.parse(lsData)));
 		}
 	}, [id, interview]);
 

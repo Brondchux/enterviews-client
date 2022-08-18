@@ -3,6 +3,7 @@ const constants = {
 	MAC: "Mark as complete",
 	STILL_ACTIVE: "Interview in process",
 	NOT_ACTIVE: "Interview ended",
+	LSCODE: "EVSI",
 	LIST: {
 		ROUND: "round",
 		COMPANY: "company",

@@ -17,15 +17,9 @@ const Interview = () => {
 	const interview = useSelector((state) => state.interview.interview);
 
 	const fetchInterviewData = useCallback(async () => {
-		/* TODO: Store this found interview object as string value to this "id" 
-		in localStorage so that when the user refreshes this or any other page 
-		and there is an "id", I can use the "id" to retrieve the complete object 
-		from localStorage. Make sure to add the fetch from localStorage function 
-		in a component shared by all files e.g App, Header, Footer */
 		const data = await findDataById(interviews, id);
 		dispatch(actions.interview.setInterview(data));
-		// Implement store in LS here!
-		// Storage name EVS-Interview {interviewId: {...values}}
+		data && localStorage.setItem(constants.LSCODE, JSON.stringify(data));
 	}, [id, interviews, dispatch]);
 
 	useEffect(() => {
