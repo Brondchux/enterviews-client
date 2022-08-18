@@ -1,5 +1,5 @@
 .search-box {
-	margin-bottom: 2rem;
+	margin-bottom: 1rem;
 	display: grid;
 	grid-template-columns: 11fr 1fr;
 }
@@ -17,4 +17,13 @@
 .search-box div:last-child span {
 	margin: auto;
 	font-size: 2rem;
+}
+.search-suggestions {
+	color: #555;
+	font-weight: 600;
+	padding: 0.5rem 1rem;
+	margin-top: -1rem;
+	margin-bottom: 1rem;
+	border-bottom: 5px solid #daa520;
+	border-radius: 0 0 15px 15px;
 }

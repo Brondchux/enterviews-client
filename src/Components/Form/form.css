@@ -1,12 +1,12 @@
 .form-box {
 	grid-column: 2/3;
 }
-form {
+.interview-form {
 	background-color: #eee;
 	padding: 15px;
 	border-radius: 15px;
 }
-form label {
+.interview-form label {
 	display: block;
 	padding-top: 1rem;
 }

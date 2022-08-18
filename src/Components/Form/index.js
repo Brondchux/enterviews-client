@@ -55,7 +55,7 @@ const Form = ({ interviewData = null }) => {
 
 	return (
 		<div className="form-box">
-			<form onSubmit={submitHandler}>
+			<form className="interview-form" onSubmit={submitHandler}>
 				<div className="alert" hidden></div>
 				<div>
 					<label htmlFor="company">Company</label>
