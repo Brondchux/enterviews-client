@@ -1,0 +1,8 @@
+.not-found {
+	display: flex;
+}
+
+.not-found section {
+	margin: auto;
+	text-align: center;
+}
