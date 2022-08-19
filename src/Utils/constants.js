@@ -18,6 +18,11 @@ const constants = {
 		PRESENT: "present",
 		FUTURE: "future",
 	},
+	MODAL_ACTIONS: {
+		ROUND_MAC: "ROUND_MAC",
+		END_INTERVIEW: "END_INTERVIEW",
+		DELETE_INTERVIEW: "DELETE_INTERVIEW",
+	},
 };
 
 export default constants;

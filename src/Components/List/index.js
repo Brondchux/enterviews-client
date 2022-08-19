@@ -35,7 +35,7 @@ const List = ({
 		dispatch(
 			actions.modal.setOptions({
 				description: `Are you sure you want to mark round ${roundId} as complete?`,
-				proceedAction: "MAC_PROCEED",
+				proceedAction: constants.MODAL_ACTIONS.ROUND_MAC,
 				proceedData: { interviewId, roundId },
 			})
 		);
