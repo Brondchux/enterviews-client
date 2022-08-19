@@ -1,12 +1,14 @@
 import "./list.css";
+import { Fragment, useCallback, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { actions } from "../../Store";
+import constants from "../../Utils/constants";
 import {
 	formatDateTime,
 	dynamicBgColor,
 	formatDuration,
 } from "../../Utils/mixins";
-import { Fragment, useCallback, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import constants from "../../Utils/constants";
 
 const List = ({
 	type,
@@ -16,6 +18,7 @@ const List = ({
 	serial = null,
 	startsAt = null,
 }) => {
+	const dispatch = useDispatch();
 	const [colorCode, setColorCode] = useState(constants.PRIORITY.ONE);
 	const colors = {
 		[constants.PRIORITY.THREE]: constants.TIMELINES.PRESENT,
@@ -26,8 +29,30 @@ const List = ({
 		const selectedTime = startsAt ? startsAt : round.startTime;
 		setColorCode(dynamicBgColor(selectedTime));
 	}, [startsAt, round]);
-
 	useEffect(() => dynamicBgColorHandler(), [dynamicBgColorHandler]);
+
+	const macHandler = (roundId) => {
+		dispatch(
+			actions.modal.setOptions({
+				description: `Are you sure you want to mark round ${roundId} as complete?`,
+				proceedAction: "MAC_PROCEED",
+				proceedData: { interviewId, roundId },
+			})
+		);
+		dispatch(actions.modal.setShowModal(true));
+	};
+
+	const roundList = round && interviewId && (
+		<Fragment>
+			<span>Start: {formatDateTime(round.startTime)}</span>
+			<span>End: {formatDateTime(round.endTime)}</span>
+			<span>Duration: {formatDuration(round.duration)}</span>
+			<span>Completed: {round.isCompleted ? "Yes" : "No"}</span>
+			<button className="mini-btn" onClick={() => macHandler(round.round)}>
+				{constants.MAC}
+			</button>
+		</Fragment>
+	);
 
 	const companyList = interview && (
 		<Fragment>
@@ -37,22 +62,6 @@ const List = ({
 				</Link>
 			</p>
 			<span>{formatDateTime(startsAt)}</span>
-		</Fragment>
-	);
-
-	const roundList = round && interviewId && (
-		<Fragment>
-			<span>Start: {formatDateTime(round.startTime)}</span>
-			<span>End: {formatDateTime(round.endTime)}</span>
-			<span>Duration: {formatDuration(round.duration)}</span>
-			<span>Completed: {round.isCompleted ? "Yes" : "No"}</span>
-			<button
-				className="mini-btn"
-				data-interview={interviewId}
-				data-round={round.round}
-			>
-				{constants.MAC}
-			</button>
 		</Fragment>
 	);
 

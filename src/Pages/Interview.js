@@ -9,12 +9,14 @@ import Footer from "../Components/Footer";
 import List from "../Components/List";
 import Advanced from "../Components/Advanced";
 import constants from "../Utils/constants";
+import Modal from "../Components/Modal";
 
 const Interview = () => {
 	const { id } = useParams();
 	const dispatch = useDispatch();
 	const interviews = useSelector((state) => state.interviews.interviews);
 	const interview = useSelector((state) => state.interview.interview);
+	const showModal = useSelector((state) => state.modal.showModal);
 
 	const fetchInterviewData = useCallback(async () => {
 		const data = await findDataById(interviews, id);
@@ -46,6 +48,7 @@ const Interview = () => {
 			<Header />
 			<main>
 				{!interview && noInterviewFound}
+				{showModal && <Modal />}
 				{interview && (
 					<section className="an-interview">
 						<div id="interview-details">
