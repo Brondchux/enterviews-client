@@ -48,7 +48,7 @@ const Search = () => {
 						className="form-control"
 						type="date"
 					/>
-					<button onClick={searchHandler}>
+					<button onClick={searchHandler} className="btn">
 						<span>GO</span>
 					</button>
 				</fieldset>

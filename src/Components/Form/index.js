@@ -1,10 +1,11 @@
 import "./form.css";
 import { useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Form = () => {
 	const { id } = useParams();
+	const navigate = useNavigate();
 	const interview = useSelector((state) => state.interview.interview);
 	const [rounds, setRounds] = useState(null);
 	const [isReadOnly, setIsReadOnly] = useState(false);
@@ -55,6 +56,12 @@ const Form = () => {
 	const submitHandler = (e) => {
 		e.preventDefault();
 		console.log(formState);
+	};
+
+	const cancelHandler = (e) => {
+		if (!id) return;
+		e.preventDefault();
+		navigate(`/interview/${id}`);
 	};
 
 	return (
@@ -134,12 +141,19 @@ const Form = () => {
 					/>
 				</div>
 				<div>
-					<input id="hId" type="hidden" />
-				</div>
-				<div>
 					<button type="submit" className="form-control btn" id="save">
 						Save
 					</button>
+					{id && interview && (
+						<button
+							type="button"
+							className="form-control btn btn-outline"
+							id="cancel"
+							onClick={cancelHandler}
+						>
+							Cancel
+						</button>
+					)}
 				</div>
 			</form>
 		</section>

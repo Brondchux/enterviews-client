@@ -16,12 +16,9 @@
 	border-radius: 10px 0 0 10px;
 }
 .search-fieldset button {
-	background-color: #daa520;
-	display: flex;
 	margin: 5px 0;
-	border: 0;
+	display: flex;
 	border-radius: 0 10px 10px 0;
-	cursor: pointer;
 }
 .search-fieldset button span {
 	margin: auto;

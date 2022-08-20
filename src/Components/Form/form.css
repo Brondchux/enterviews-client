@@ -20,7 +20,17 @@
 	border: 0;
 	cursor: pointer;
 	border-radius: 5px;
-	margin: 15px auto;
+	margin: 15px auto 5px auto;
+}
+.btn:hover {
+	color: #fff;
+}
+.btn-outline {
+	border: 2px solid #daa520;
+	background-color: #fff;
+}
+.btn-outline:hover {
+	color: #daa520;
 }
 .mini-btn {
 	border: 1px solid #222;
