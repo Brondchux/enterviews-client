@@ -13,10 +13,10 @@ const NotFound = () => {
 					<h2>404</h2>
 					<p>
 						It'a a dead end! Click
-						<Link to={{ pathname: "/interviews" }} className="link">
+						<Link to={{ pathname: "/" }} className="link">
 							&nbsp;here&nbsp;
 						</Link>
-						to get back on track 🙂
+						to go back home 🙂
 					</p>
 				</section>
 			</main>

@@ -6,20 +6,23 @@ import addition from "../../assets/img/addition.png";
 const Snapshots = () => {
 	return (
 		<section className="frames">
-			<figure className="img-frame" style={{ background: `url(${companies})` }}>
-				<figcaption className="img-caption">
-					<p>Your Interviews</p>
-				</figcaption>
+			<figure className="img-frame">
+				<img src={companies} alt="companies interviewing you" />
+				<div className="overlay overlay-fade">
+					<figcaption className="img-caption">Active companies</figcaption>
+				</div>
 			</figure>
-			<figure className="img-frame" style={{ background: `url(${rounds})` }}>
-				<figcaption className="img-caption">
-					<p>Interview Rounds</p>
-				</figcaption>
+			<figure className="img-frame">
+				<img src={addition} alt="add new round" />
+				<div className="overlay overlay-fade">
+					<figcaption className="img-caption">Add round</figcaption>
+				</div>
 			</figure>
-			<figure className="img-frame" style={{ background: `url(${addition})` }}>
-				<figcaption className="img-caption">
-					<p>New Interview</p>
-				</figcaption>
+			<figure className="img-frame">
+				<img src={rounds} alt="interview rounds" />
+				<div className="overlay overlay-fade">
+					<figcaption className="img-caption">Interview rounds</figcaption>
+				</div>
 			</figure>
 		</section>
 	);

@@ -30,10 +30,13 @@ const Home = () => {
 						<h3>Did you just answer yes to all those questions? 😳</h3>
 						<p>
 							Hurry, lets get you{" "}
-							<Link to={"/signup"} className="link">
+							<Link to={"/signin"} className="link">
 								logged in
 							</Link>
-							! Wait, you still reading? That's ok{" "}
+							!
+						</p>
+						<p>
+							Wait, you still reading? That's ok{" "}
 							<Link to={"/signup"} className="link">
 								create an account
 							</Link>
@@ -45,6 +48,8 @@ const Home = () => {
 						<p>
 							Uhmm, don't expect anything fancy, it's strictly functionalities
 						</p>
+					</article>
+					<article className="snapshots">
 						<Snapshots />
 					</article>
 				</section>

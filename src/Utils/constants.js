@@ -23,6 +23,10 @@ const constants = {
 		END_INTERVIEW: "END_INTERVIEW",
 		DELETE_INTERVIEW: "DELETE_INTERVIEW",
 	},
+	AUTH_FORM_TYPES: {
+		SIGN_IN: "SIGN_IN",
+		SIGN_UP: "SIGN_UP",
+	},
 };
 
 export default constants;

@@ -55,7 +55,7 @@ const Form = () => {
 
 	const submitHandler = (e) => {
 		e.preventDefault();
-		console.log(formState);
+		console.table(formState);
 	};
 
 	const cancelHandler = (e) => {
