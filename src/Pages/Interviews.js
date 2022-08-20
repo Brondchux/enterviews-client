@@ -1,4 +1,4 @@
-import "../Styles/Interviews.css";
+import "../assets/css//Interviews.css";
 import { Fragment, useEffect } from "react";
 import List from "../Components/List";
 import Header from "../Components/Header";

@@ -1,4 +1,4 @@
-import "../Styles/NotFound.css";
+import "../assets/css//NotFound.css";
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../Components/Footer";

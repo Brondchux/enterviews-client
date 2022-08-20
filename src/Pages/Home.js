@@ -1,4 +1,4 @@
-import "../Styles/Home.css";
+import "../assets/css//Home.css";
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
 import Header from "../Components/Header";

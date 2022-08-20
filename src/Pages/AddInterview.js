@@ -1,4 +1,4 @@
-import "../Styles/AddInterview.css";
+import "../assets/css//AddInterview.css";
 import { Fragment } from "react";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
