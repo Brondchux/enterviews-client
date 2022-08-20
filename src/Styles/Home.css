@@ -1,8 +1,6 @@
-.uac-wrapper {
-	display: flex;
-	min-height: 80vh;
-	text-align: center;
+.copy {
+	padding: 2rem;
 }
-.uac-copy {
-	margin: auto;
+.copy article {
+	margin: 1rem auto 3rem auto;
 }

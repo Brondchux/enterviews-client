@@ -60,7 +60,10 @@ const Search = () => {
 							e.stopPropagation();
 						}}
 					>
-						Looking for {formState.search}
+						Looking for{" "}
+						{formState.search.length > 0
+							? formState.search
+							: formState.calendar}
 					</p>
 				</section>
 			)}

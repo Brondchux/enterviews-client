@@ -7,7 +7,7 @@
 	padding: 0;
 	border: 0;
 	display: grid;
-	grid-template-columns: repeat(1, 9fr 3fr 1fr);
+	grid-template-columns: repeat(1, 7fr 4fr 1fr);
 }
 .search-fieldset input {
 	border: 1px solid #555;

@@ -1,0 +1,105 @@
+[
+	{
+		"company": "State From Inc",
+		"role": "Software Engineer",
+		"rounds": [
+			{
+				"round": 1,
+				"startTime": "2022-08-15T17:00:00.000Z",
+				"endTime": "2022-08-15T18:00:00.000Z",
+				"duration": 1,
+				"isCompleted": true
+			},
+			{
+				"round": 2,
+				"startTime": "2022-08-26T17:30:00.000Z",
+				"endTime": "2022-08-26T18:30:00.000Z",
+				"duration": 1,
+				"isCompleted": false
+			}
+		],
+		"isStillActive": true,
+		"id": 2786699463197
+	},
+	{
+		"company": "Mission Accomplishers",
+		"role": "Senior Backend Node.js Developer",
+		"rounds": [
+			{
+				"round": 1,
+				"startTime": "2022-08-12T15:00:00.000Z",
+				"endTime": "2022-08-12T15:30:00.000Z",
+				"duration": 0.5,
+				"isCompleted": true
+			},
+			{
+				"round": 2,
+				"startTime": "2022-08-23T17:00:00.000Z",
+				"endTime": "2022-08-23T17:45:00.000Z",
+				"duration": 0.75,
+				"isCompleted": false
+			}
+		],
+		"isStillActive": true,
+		"id": 3027982008728
+	},
+	{
+		"company": "Cap Gel Mine",
+		"role": "Software Engineer",
+		"rounds": [
+			{
+				"round": 1,
+				"startTime": "2022-08-18T22:00:00.000Z",
+				"endTime": "2022-08-18T23:00:00.000Z",
+				"duration": 1,
+				"isCompleted": false
+			},
+			{
+				"round": 2,
+				"startTime": "2022-08-20T14:00:00.000Z",
+				"endTime": "2022-08-20T14:45:00.000Z",
+				"duration": 0.75,
+				"isCompleted": true
+			}
+		],
+		"isStillActive": true,
+		"id": 2773303003407
+	},
+	{
+		"company": "Info Sisters Ltd.",
+		"role": "Software Engineer",
+		"rounds": [
+			{
+				"round": 1,
+				"startTime": "2022-08-16T14:00:00.000Z",
+				"endTime": "2022-08-16T15:00:00.000Z",
+				"duration": 1,
+				"isCompleted": true
+			}
+		],
+		"isStillActive": true,
+		"id": 2635662326732
+	},
+	{
+		"company": "Very Cast",
+		"role": "Software Engineer",
+		"rounds": [
+			{
+				"round": 2,
+				"startTime": "2022-08-19T14:00:00.000Z",
+				"endTime": "2022-08-19T14:45:00.000Z",
+				"duration": 0.75,
+				"isCompleted": true
+			},
+			{
+				"round": 1,
+				"startTime": "2022-08-17T19:00:00.000Z",
+				"endTime": "2022-08-17T19:45:00.000Z",
+				"duration": 0.75,
+				"isCompleted": true
+			}
+		],
+		"isStillActive": true,
+		"id": 1775086333554
+	}
+]
