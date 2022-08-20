@@ -5,10 +5,12 @@ const Search = () => {
 	const [showSuggestions, setShowSuggestions] = useState(false);
 	const [formState, setFormState] = useState({
 		search: "",
+		calendar: "",
 	});
 	const changeHandler = (e) => {
 		const { name, value } = e.target;
 		setFormState({
+			...formState,
 			[name]: value,
 		});
 	};
@@ -20,31 +22,46 @@ const Search = () => {
 		setShowSuggestions(false);
 		setFormState({
 			search: "",
+			calendar: "",
 		});
 	};
 
 	return (
 		<Fragment>
 			<form className="search-box" onSubmit={searchHandler}>
-				<div>
+				<fieldset className="search-fieldset">
 					<input
 						id="search"
 						name="search"
 						value={formState.search}
 						onChange={changeHandler}
 						className="form-control"
-						placeholder="search by date or company"
+						placeholder="search company or date"
 						type="text"
-						onBlur={closeSuggestions}
+						autoComplete="off"
 					/>
-				</div>
-				<div onClick={searchHandler}>
-					<span>GO</span>
-				</div>
+					<input
+						id="calendar"
+						name="calendar"
+						value={formState.calendar}
+						onChange={changeHandler}
+						className="form-control"
+						type="date"
+					/>
+					<button onClick={searchHandler}>
+						<span>GO</span>
+					</button>
+				</fieldset>
 			</form>
 			{showSuggestions && (
-				<section className="search-suggestions">
-					<p>Looking for {formState.search}</p>
+				<section className="search-suggestions" onClick={closeSuggestions}>
+					<p
+						onClick={(e) => {
+							e.stopPropagation();
+						}}
+					>
+						Looking for {formState.search}
+					</p>
 				</section>
 			)}
 		</Fragment>

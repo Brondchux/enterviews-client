@@ -49,7 +49,7 @@ const Form = () => {
 			time: "",
 			duration: "",
 		});
-	}, [interview]);
+	}, [id, interview]);
 	useEffect(() => populateFields(), [populateFields]);
 
 	const submitHandler = (e) => {
@@ -58,9 +58,9 @@ const Form = () => {
 	};
 
 	return (
-		<div className="form-box">
+		<section className="form-box">
+			<div className="alert" hidden></div>
 			<form className="interview-form" onSubmit={submitHandler}>
-				<div className="alert" hidden></div>
 				<div>
 					<label htmlFor="company">Company</label>
 					<input
@@ -142,7 +142,7 @@ const Form = () => {
 					</button>
 				</div>
 			</form>
-		</div>
+		</section>
 	);
 };
 

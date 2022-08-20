@@ -1,22 +1,31 @@
 .search-box {
 	margin-bottom: 1rem;
 	display: grid;
-	grid-template-columns: 11fr 1fr;
+	grid-template-columns: repeat(1, 12fr);
 }
-.search-box div:first-child input {
-	border-radius: 10px 0 0 10px;
+.search-fieldset {
+	padding: 0;
+	border: 0;
+	display: grid;
+	grid-template-columns: repeat(1, 9fr 3fr 1fr);
+}
+.search-fieldset input {
 	border: 1px solid #555;
 }
-.search-box div:last-child {
+.search-fieldset input:first-child {
+	border-radius: 10px 0 0 10px;
+}
+.search-fieldset button {
 	background-color: #daa520;
 	display: flex;
 	margin: 5px 0;
+	border: 0;
 	border-radius: 0 10px 10px 0;
 	cursor: pointer;
 }
-.search-box div:last-child span {
+.search-fieldset button span {
 	margin: auto;
-	font-size: 2rem;
+	font-size: 1.5rem;
 }
 .search-suggestions {
 	color: #555;
