@@ -36,7 +36,7 @@ const Home = () => {
 							!
 						</p>
 						<p>
-							Wait, you still reading? That's ok{" "}
+							Wait, are you still reading? That's ok{" "}
 							<Link to={"/signup"} className="link">
 								create an account
 							</Link>
@@ -46,7 +46,7 @@ const Home = () => {
 					<article className="snapshots">
 						<h3>Want a glimpse of what we are offering you for free? 😀</h3>
 						<p>
-							Uhmm, don't expect anything fancy, it's strictly functionalities
+							Uhmm, don't expect anything fancy, it's strictly functionalities.
 						</p>
 					</article>
 					<article className="snapshots">
