@@ -1,7 +1,11 @@
 import "./form.css";
 import { useCallback, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
-const Form = ({ interviewData = null }) => {
+const Form = () => {
+	const { id } = useParams();
+	const interview = useSelector((state) => state.interview.interview);
 	const [rounds, setRounds] = useState(null);
 	const [isReadOnly, setIsReadOnly] = useState(false);
 	const [formState, setFormState] = useState({
@@ -33,19 +37,19 @@ const Form = ({ interviewData = null }) => {
 	useEffect(() => roundOptions(), []);
 
 	const populateFields = useCallback(() => {
-		if (!interviewData) return;
-		const newRoundCount = interviewData.rounds.length + 1;
+		if (!id || !interview) return;
+		const newRoundCount = interview.rounds.length + 1;
 		roundOptions(newRoundCount, newRoundCount);
 		setIsReadOnly(true);
 		setFormState({
-			company: interviewData.company,
-			role: interviewData.role,
+			company: interview.company,
+			role: interview.role,
 			round: newRoundCount,
 			date: "",
 			time: "",
 			duration: "",
 		});
-	}, [interviewData]);
+	}, [interview]);
 	useEffect(() => populateFields(), [populateFields]);
 
 	const submitHandler = (e) => {
