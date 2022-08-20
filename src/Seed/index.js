@@ -1,3 +1,3 @@
-import interviews from "./mock.json";
+import interviews from "./interviews.json";
 
 export const companies = interviews;
