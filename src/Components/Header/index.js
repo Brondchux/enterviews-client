@@ -15,10 +15,10 @@ const Header = () => {
 		if (!id) return;
 		if (id && interview) return;
 		if (id && !interview) {
-			const lsData = localStorage.getItem(constants.LSCODE);
+			const lsData = localStorage.getItem(constants.LS.INTERVIEW);
 			lsData && dispatch(actions.interview.setInterview(JSON.parse(lsData)));
 		}
-	}, [id, interview]);
+	}, [id, interview, dispatch]);
 
 	useEffect(() => {
 		fetchDataFromLocalStorage();
