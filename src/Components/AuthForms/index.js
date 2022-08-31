@@ -1,8 +1,18 @@
 import "../Form/form.css";
 import constants from "../../Utils/constants";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { actions, thunks } from "../../Store";
+import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import Spinner from "../Spinner";
 
 const AuthForms = ({ type }) => {
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+	const { user, isLoading, isError, isSuccess, message } = useSelector(
+		(state) => state.auth
+	);
 	const [formState, setFormState] = useState({
 		email: "",
 		password: "",
@@ -19,13 +29,26 @@ const AuthForms = ({ type }) => {
 
 	const submitHandler = (e) => {
 		e.preventDefault();
-		const [name, value] = e.target;
-		setFormState({
-			...formState,
-			[name]: value,
-		});
-		console.table(formState);
+		if (formState.password !== formState.cPassword) {
+			return toast.error(constants.PWD_MIS_MATCH);
+		}
+		const userData = { email: formState.email, password: formState.password };
+		dispatch(thunks.signup(userData));
 	};
+
+	useEffect(() => {
+		if (isError) {
+			toast.error(message);
+		}
+		if (isSuccess || user) {
+			navigate("/interviews");
+		}
+		dispatch(actions.auth.reset());
+	}, [user, isError, isSuccess, message, navigate, dispatch]);
+
+	if (isLoading) {
+		return <Spinner />;
+	}
 
 	return (
 		<section className="form-box">

@@ -9,6 +9,8 @@ import NotFound from "./Pages/NotFound";
 import Store from "./Store";
 import SignIn from "./Pages/SignIn";
 import SignUp from "./Pages/SignUp";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
 	return (
@@ -25,6 +27,7 @@ const App = () => {
 					<Route path="*" element={<NotFound />} />
 				</Routes>
 			</Router>
+			<ToastContainer />
 		</Provider>
 	);
 };

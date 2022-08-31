@@ -30,6 +30,7 @@ const constants = {
 		SIGN_IN: "SIGN_IN",
 		SIGN_UP: "SIGN_UP",
 	},
+	PWD_MIS_MATCH: "Passwords do not match!",
 };
 
 export default constants;

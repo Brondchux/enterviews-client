@@ -11,6 +11,7 @@ const Header = () => {
 	const interview = useSelector((state) => state.interview.interview);
 	const { id } = useParams();
 
+	// Get interview data from local storage if any
 	const fetchDataFromLocalStorage = useCallback(() => {
 		if (!id) return;
 		if (id && interview) return;
@@ -23,6 +24,16 @@ const Header = () => {
 	useEffect(() => {
 		fetchDataFromLocalStorage();
 	}, [fetchDataFromLocalStorage]);
+
+	// Get user data from local storage if any
+	const fetchUserFromLocalStorage = useCallback(() => {
+		const lsUser = localStorage.getItem(constants.LS.USER);
+		lsUser && dispatch(actions.auth.setUser(JSON.parse(lsUser)));
+	}, [dispatch]);
+
+	useEffect(() => {
+		fetchUserFromLocalStorage();
+	}, [fetchUserFromLocalStorage]);
 
 	return (
 		<header>
