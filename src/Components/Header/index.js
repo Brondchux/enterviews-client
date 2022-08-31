@@ -1,13 +1,13 @@
 import { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, NavLink, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { actions } from "../../Store";
 import constants from "../../Utils/constants";
+import Navbar from "../Navbar";
 import "./header.css";
 
 const Header = () => {
 	const dispatch = useDispatch();
-	const activeClassName = "active";
 	const interview = useSelector((state) => state.interview.interview);
 	const { id } = useParams();
 
@@ -43,26 +43,7 @@ const Header = () => {
 				</Link>
 				<p>keep track your interviews</p>
 			</div>
-			<nav>
-				<ul>
-					<li>
-						<NavLink
-							to="/interviews"
-							className={({ isActive }) => (isActive ? activeClassName : "")}
-						>
-							All Interviews
-						</NavLink>
-					</li>
-					<li>
-						<NavLink
-							to="/add-interview"
-							className={({ isActive }) => (isActive ? activeClassName : "")}
-						>
-							Add Interview
-						</NavLink>
-					</li>
-				</ul>
-			</nav>
+			<Navbar />
 		</header>
 	);
 };

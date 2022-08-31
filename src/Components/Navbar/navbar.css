@@ -1,0 +1,26 @@
+nav {
+	background-color: #555;
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+}
+nav ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+}
+nav ul li {
+	text-align: center;
+	display: flex;
+}
+nav ul li a {
+	margin: auto;
+	color: #daa520;
+	font-size: 2rem;
+	font-weight: bold;
+}
+nav ul li a:hover,
+.active {
+	text-decoration: underline;
+}
