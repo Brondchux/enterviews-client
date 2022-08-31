@@ -26,10 +26,11 @@ const constants = {
 		END_INTERVIEW: "END_INTERVIEW",
 		DELETE_INTERVIEW: "DELETE_INTERVIEW",
 	},
-	AUTH_FORM_TYPES: {
-		SIGN_IN: "SIGN_IN",
-		SIGN_UP: "SIGN_UP",
+	AUTH_TYPES: {
+		SIGNIN: "SIGNIN",
+		SIGNUP: "SIGNUP",
 	},
+	PWD_LENGTH: 8,
 	PWD_MIS_MATCH: "Passwords do not match!",
 };
 

@@ -14,7 +14,7 @@ const SignUp = () => {
 					<h2>Create an account</h2>
 				</section>
 				<section className="add-interview-form">
-					<AuthForms type={constants.AUTH_FORM_TYPES.SIGN_UP} />
+					<AuthForms type={constants.AUTH_TYPES.SIGNUP} />
 				</section>
 				<section className="centered">
 					<p>

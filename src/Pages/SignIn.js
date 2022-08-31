@@ -14,7 +14,7 @@ const SignIn = () => {
 					<h2>Account login</h2>
 				</section>
 				<section className="add-interview-form">
-					<AuthForms type={constants.AUTH_FORM_TYPES.SIGN_IN} />
+					<AuthForms type={constants.AUTH_TYPES.SIGNIN} />
 				</section>
 				<section className="centered">
 					<p>

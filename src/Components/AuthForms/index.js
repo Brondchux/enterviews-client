@@ -18,6 +18,7 @@ const AuthForms = ({ type }) => {
 		password: "",
 		cPassword: "",
 	});
+	const { email, password, cPassword } = formState;
 
 	const changeHandler = (e) => {
 		const { name, value } = e.target;
@@ -29,11 +30,22 @@ const AuthForms = ({ type }) => {
 
 	const submitHandler = (e) => {
 		e.preventDefault();
-		if (formState.password !== formState.cPassword) {
-			return toast.error(constants.PWD_MIS_MATCH);
+		if (!email.trim().length) return toast.error("Email is required.");
+		if (!password.trim().length) return toast.error("Password is required.");
+		const userData = { email, password };
+		if (type === constants.AUTH_TYPES.SIGNUP) {
+			if (password.length < constants.PWD_LENGTH)
+				return toast.error(
+					`Password should be at least ${constants.PWD_LENGTH} characters long.`
+				);
+			if (!cPassword.trim().length)
+				return toast.error("Confirm password is required.");
+			if (password !== cPassword) return toast.error(constants.PWD_MIS_MATCH);
+			userData[cPassword] = cPassword;
+			dispatch(thunks.signup(userData));
+		} else {
+			dispatch(thunks.signin(userData));
 		}
-		const userData = { email: formState.email, password: formState.password };
-		dispatch(thunks.signup(userData));
 	};
 
 	useEffect(() => {
@@ -58,7 +70,7 @@ const AuthForms = ({ type }) => {
 					<input
 						id="email"
 						name="email"
-						value={formState.email}
+						value={email}
 						onChange={changeHandler}
 						className="form-control"
 						type="email"
@@ -69,19 +81,19 @@ const AuthForms = ({ type }) => {
 					<input
 						id="password"
 						name="password"
-						value={formState.password}
+						value={password}
 						onChange={changeHandler}
 						className="form-control"
 						type="password"
 					/>
 				</div>
-				{type === constants.AUTH_FORM_TYPES.SIGN_UP && (
+				{type === constants.AUTH_TYPES.SIGNUP && (
 					<div>
 						<label htmlFor="cPassword">Confirm Password</label>
 						<input
 							id="cPassword"
 							name="cPassword"
-							value={formState.cPassword}
+							value={cPassword}
 							onChange={changeHandler}
 							className="form-control"
 							type="password"

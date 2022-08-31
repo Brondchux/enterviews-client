@@ -3,10 +3,11 @@ import interviewSlice from "./modules/interview";
 import interviewsSlice from "./modules/interviews";
 import modalSlice from "./modules/modal";
 import authSlice from "./modules/auth";
-import { signup } from "./modules/auth";
+import { signup, signin } from "./modules/auth";
 
 export const thunks = {
 	signup,
+	signin,
 };
 
 export const actions = {
