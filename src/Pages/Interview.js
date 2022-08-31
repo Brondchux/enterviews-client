@@ -21,7 +21,7 @@ const Interview = () => {
 	const fetchInterviewData = useCallback(async () => {
 		const data = await findDataById(interviews, id);
 		dispatch(actions.interview.setInterview(data));
-		data && localStorage.setItem(constants.LSCODE, JSON.stringify(data));
+		data && localStorage.setItem(constants.LS.INTERVIEW, JSON.stringify(data));
 	}, [id, interviews, dispatch]);
 
 	useEffect(() => {

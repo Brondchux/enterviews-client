@@ -25,6 +25,16 @@ const Header = () => {
 		fetchDataFromLocalStorage();
 	}, [fetchDataFromLocalStorage]);
 
+	// Get token from local storage if any
+	const fetchTokenFromLocalStorage = useCallback(() => {
+		const lsToken = localStorage.getItem(constants.LS.TOKEN);
+		lsToken && dispatch(actions.auth.setToken(JSON.parse(lsToken)));
+	}, [dispatch]);
+
+	useEffect(() => {
+		fetchTokenFromLocalStorage();
+	}, [fetchTokenFromLocalStorage]);
+
 	// Get user data from local storage if any
 	const fetchUserFromLocalStorage = useCallback(() => {
 		const lsUser = localStorage.getItem(constants.LS.USER);

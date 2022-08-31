@@ -10,7 +10,7 @@ import Spinner from "../Spinner";
 const AuthForms = ({ type }) => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const { user, isLoading, isError, isSuccess, message } = useSelector(
+	const { token, user, isLoading, isError, isSuccess, message } = useSelector(
 		(state) => state.auth
 	);
 	const [formState, setFormState] = useState({
@@ -52,11 +52,14 @@ const AuthForms = ({ type }) => {
 		if (isError) {
 			toast.error(message);
 		}
-		if (isSuccess || user) {
+		if (isSuccess && token) {
+			dispatch(thunks.account(token));
+		}
+		if (isSuccess && user) {
 			navigate("/interviews");
 		}
 		dispatch(actions.auth.reset());
-	}, [user, isError, isSuccess, message, navigate, dispatch]);
+	}, [token, user, isError, isSuccess, message, navigate, dispatch]);
 
 	if (isLoading) {
 		return <Spinner />;

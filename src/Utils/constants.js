@@ -5,6 +5,7 @@ const constants = {
 	NOT_ACTIVE: "Interview ended",
 	LS: {
 		USER: "EVSU",
+		TOKEN: "EVST",
 		INTERVIEW: "EVSI",
 	},
 	LIST: {

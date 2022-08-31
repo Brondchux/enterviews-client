@@ -55,10 +55,10 @@ const Navbar = () => {
 			</li>
 			<li>
 				<NavLink
-					to="/sign-out"
+					to="/account"
 					className={({ isActive }) => (isActive ? activeClassName : "")}
 				>
-					Sign Out
+					Account
 				</NavLink>
 			</li>
 		</ul>
