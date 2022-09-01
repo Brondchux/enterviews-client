@@ -11,6 +11,7 @@ import SignIn from "./Pages/SignIn";
 import SignUp from "./Pages/SignUp";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Account from "./Pages/Account";
 
 const App = () => {
 	return (
@@ -24,6 +25,7 @@ const App = () => {
 					<Route path="/add-rounds/:id" element={<AddInterview />} />
 					<Route path="/signin" element={<SignIn />} />
 					<Route path="/signup" element={<SignUp />} />
+					<Route path="/account" element={<Account />} />
 					<Route path="*" element={<NotFound />} />
 				</Routes>
 			</Router>

@@ -49,3 +49,14 @@ export const findDataById = (arr, id) => {
 	if (!arr || !id) return;
 	return arr.find((data) => parseInt(data.id) === parseInt(id));
 };
+
+export const capitalize = (string) => {
+	if (!string) return;
+	let firstChar = string.at(0).toLowerCase();
+	if (firstChar >= "a" && firstChar <= "z") {
+		firstChar = firstChar.toUpperCase();
+		let otherChars = string.slice(1, string.length + 1);
+		return `${firstChar}${otherChars}`;
+	}
+	return string;
+};
