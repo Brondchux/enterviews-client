@@ -26,15 +26,15 @@ const List = ({
 		[constants.PRIORITY.ONE]: constants.TIMELINES.PAST,
 	};
 	const dynamicBgColorHandler = useCallback(() => {
-		const selectedTime = startsAt ? startsAt : round.startTime;
+		const selectedTime = startsAt ? startsAt : round.start_time;
 		setColorCode(dynamicBgColor(selectedTime));
 	}, [startsAt, round]);
 	useEffect(() => dynamicBgColorHandler(), [dynamicBgColorHandler]);
 
-	const macHandler = (roundId) => {
+	const macHandler = (count, roundId) => {
 		dispatch(
 			actions.modal.setOptions({
-				description: `Are you sure you want to mark round ${roundId} as complete?`,
+				description: `Are you sure you want to mark round ${count} as complete?`,
 				proceedAction: constants.MODAL_ACTIONS.ROUND_MAC,
 				proceedData: { interviewId, roundId },
 			})
@@ -44,11 +44,14 @@ const List = ({
 
 	const roundList = round && interviewId && (
 		<Fragment>
-			<span>Start: {formatDateTime(round.startTime)}</span>
-			<span>End: {formatDateTime(round.endTime)}</span>
+			<span>Start: {formatDateTime(round.start_time)}</span>
+			<span>End: {formatDateTime(round.end_time)}</span>
 			<span>Duration: {formatDuration(round.duration)}</span>
 			<span>Completed: {round.isCompleted ? "Yes" : "No"}</span>
-			<button className="mini-btn" onClick={() => macHandler(round.round)}>
+			<button
+				className="mini-btn"
+				onClick={() => macHandler(round.count, round.id)}
+			>
 				{constants.MAC}
 			</button>
 		</Fragment>
@@ -69,7 +72,7 @@ const List = ({
 		<li className={`interview-li serial-${colors[colorCode]}-line`}>
 			<div className={`serial serial-${colors[colorCode]}`}>
 				{interview && <span>{serial}</span>}
-				{round && interviewId && <span>{`R${round.round}`}</span>}
+				{round && interviewId && <span>{`R${round.count}`}</span>}
 			</div>
 
 			<div className="content">

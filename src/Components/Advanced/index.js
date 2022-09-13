@@ -28,7 +28,7 @@ const Advanced = () => {
 	};
 
 	return (
-		<div id="interview-advanced" className="">
+		<section className="advanced-section">
 			<h4>Advanced zone</h4>
 			<p>Any action executed here is permanent and cannot be undone!</p>
 			<div className="advanced-btns">
@@ -39,7 +39,7 @@ const Advanced = () => {
 					Delete interview
 				</button>
 			</div>
-		</div>
+		</section>
 	);
 };
 
