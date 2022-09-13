@@ -8,12 +8,19 @@ const initialState = {
 	isLoading: false,
 	message: "",
 };
+
 const interviewsSlice = createSlice({
 	name: "interviews",
 	initialState,
 	reducers: {
 		setInterviews(state, { payload }) {
 			state.interviews = payload;
+		},
+		reset(state) {
+			state.isError = false;
+			state.isSuccess = false;
+			state.isLoading = false;
+			state.message = "";
 		},
 	},
 	extraReducers: (builder) => {
@@ -30,10 +37,24 @@ const interviewsSlice = createSlice({
 				state.isLoading = false;
 				state.isError = true;
 				state.message = action.payload;
+			})
+			.addCase(addInterview.pending, (state) => {
+				state.isLoading = true;
+			})
+			.addCase(addInterview.fulfilled, (state, action) => {
+				state.isLoading = false;
+				state.isSuccess = true;
+				state.interviews = null;
+			})
+			.addCase(addInterview.rejected, (state, action) => {
+				state.isLoading = false;
+				state.isError = true;
+				state.message = action.payload;
 			});
 	},
 });
 
+// Get user interviews
 export const getInterviews = createAsyncThunk(
 	"interviews/getInterviews",
 	async (_, thunkAPI) => {
@@ -46,6 +67,23 @@ export const getInterviews = createAsyncThunk(
 				err.message ||
 				err.toString();
 
+			return thunkAPI.rejectWithValue(message);
+		}
+	}
+);
+
+// Add user interview
+export const addInterview = createAsyncThunk(
+	"interviews/addInterview",
+	async (interviewData, thunkAPI) => {
+		try {
+			const token = thunkAPI.getState().auth.token;
+			return await interviewsServices.addInterview(interviewData, token);
+		} catch (err) {
+			const message =
+				(err.response && err.response.data && err.response.data.message) ||
+				err.message ||
+				err.toString();
 			return thunkAPI.rejectWithValue(message);
 		}
 	}

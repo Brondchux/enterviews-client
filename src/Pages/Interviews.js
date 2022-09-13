@@ -5,7 +5,7 @@ import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import Search from "../Components/Search";
 import { useDispatch, useSelector } from "react-redux";
-import { thunks } from "../Store";
+import { actions, thunks } from "../Store";
 import constants from "../Utils/constants";
 import Spinner from "../Components/Spinner";
 import { toast } from "react-toastify";
@@ -21,7 +21,8 @@ const Interviews = () => {
 			toast.error(message);
 		}
 		dispatch(thunks.getInterviews());
-	}, [isError, message, dispatch]);
+		dispatch(actions.interviews.reset());
+	}, [isError, message, interviews, dispatch]);
 
 	if (isLoading) {
 		return <Spinner />;

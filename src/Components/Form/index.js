@@ -1,12 +1,19 @@
 import "./form.css";
 import { useCallback, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
+import Spinner from "../Spinner";
+import { actions, thunks } from "../../Store";
+import { toast } from "react-toastify";
 
 const Form = () => {
 	const { id } = useParams();
+	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const interview = useSelector((state) => state.interview.interview);
+	const { isError, isLoading, isSuccess, message, interviews } = useSelector(
+		(state) => state.interviews
+	);
+	const { interview } = useSelector((state) => state.interview);
 	const [rounds, setRounds] = useState(null);
 	const [isReadOnly, setIsReadOnly] = useState(false);
 	const [formState, setFormState] = useState({
@@ -55,7 +62,11 @@ const Form = () => {
 
 	const submitHandler = (e) => {
 		e.preventDefault();
-		console.table(formState);
+		const interviewData = {
+			...formState,
+			startTime: `${formState.date} ${formState.time}`,
+		};
+		dispatch(thunks.addInterview(JSON.stringify(interviewData)));
 	};
 
 	const cancelHandler = (e) => {
@@ -63,6 +74,20 @@ const Form = () => {
 		e.preventDefault();
 		navigate(`/interview/${id}`);
 	};
+
+	useEffect(() => {
+		if (isError) {
+			toast(message);
+		}
+		if (isSuccess && !interviews) {
+			navigate("/interviews");
+		}
+		dispatch(actions.interviews.reset());
+	}, [isError, isSuccess, message, interviews, navigate, dispatch]);
+
+	if (isLoading) {
+		return <Spinner />;
+	}
 
 	return (
 		<section className="form-box">

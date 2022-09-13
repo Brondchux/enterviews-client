@@ -14,7 +14,7 @@ const Account = () => {
 	const signoutHandler = () => {
 		dispatch(thunks.signout());
 		dispatch(actions.auth.reset());
-		navigate("/signin");
+		navigate("/");
 	};
 
 	return (

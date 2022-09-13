@@ -56,7 +56,7 @@ const AuthForms = ({ type }) => {
 			dispatch(thunks.account(token));
 		}
 		if (isSuccess && user) {
-			navigate("/interviews");
+			navigate("/account");
 		}
 		dispatch(actions.auth.reset());
 	}, [token, user, isError, isSuccess, message, navigate, dispatch]);
