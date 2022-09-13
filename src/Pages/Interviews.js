@@ -42,7 +42,7 @@ const Interviews = () => {
 										type={constants.LIST.COMPANY}
 										serial={index + 1}
 										interview={data}
-										startsAt={data.rounds[data.rounds.length - 1].start_time}
+										startsAt={data.rounds[0].start_time}
 									/>
 								))}
 						</ul>
