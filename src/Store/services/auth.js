@@ -27,6 +27,13 @@ const signin = async (userData) => {
 	return response.data.data.token;
 };
 
+// Sign out user service
+const signout = () => {
+	localStorage.removeItem(constants.LS.USER);
+	localStorage.removeItem(constants.LS.TOKEN);
+	localStorage.removeItem(constants.LS.INTERVIEW);
+};
+
 // Get user details using token service
 const account = async (token) => {
 	const config = {
@@ -45,6 +52,7 @@ const account = async (token) => {
 const authService = {
 	signup,
 	signin,
+	signout,
 	account,
 };
 

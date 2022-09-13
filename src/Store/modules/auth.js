@@ -76,6 +76,10 @@ const authSlice = createSlice({
 				state.isError = true;
 				state.message = action.payload;
 				state.user = null;
+			})
+			.addCase(signout.fulfilled, (state) => {
+				state.user = null;
+				state.token = null;
 			});
 	},
 });
@@ -113,6 +117,11 @@ export const signin = createAsyncThunk(
 		}
 	}
 );
+
+// Sign out user
+export const signout = createAsyncThunk("auth/signout", async () => {
+	authService.signout();
+});
 
 // Get user details using token
 export const account = createAsyncThunk(

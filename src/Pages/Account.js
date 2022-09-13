@@ -1,12 +1,21 @@
 import { Fragment } from "react";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import Footer from "../Components/Footer";
 import Header from "../Components/Header";
+import { actions, thunks } from "../Store";
 import { formatDateTime, capitalize } from "../Utils/mixins";
 
 const Account = () => {
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
 	const { user } = useSelector((state) => state.auth);
+
+	const signoutHandler = () => {
+		dispatch(thunks.signout());
+		dispatch(actions.auth.reset());
+		navigate("/signin");
+	};
 
 	return (
 		<Fragment>
@@ -33,10 +42,8 @@ const Account = () => {
 									My interviews
 								</Link>
 							</p>
-							<p>
-								<Link to={{ pathname: "/home" }} className="link">
-									Sign out
-								</Link>
+							<p className="link" onClick={signoutHandler}>
+								Sign out
 							</p>
 						</article>
 					</section>
