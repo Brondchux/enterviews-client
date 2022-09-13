@@ -4,19 +4,28 @@ import List from "../Components/List";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import Search from "../Components/Search";
-import { companies } from "../Seed";
 import { useDispatch, useSelector } from "react-redux";
-import { actions } from "../Store";
+import { thunks } from "../Store";
 import constants from "../Utils/constants";
+import Spinner from "../Components/Spinner";
+import { toast } from "react-toastify";
 
 const Interviews = () => {
 	const dispatch = useDispatch();
-	const interviews = useSelector((state) => state.interviews.interviews);
+	const { interviews, isLoading, isError, message } = useSelector(
+		(state) => state.interviews
+	);
 
 	useEffect(() => {
-		// TODO: add API call later
-		dispatch(actions.interviews.setInterviews(companies));
-	}, [dispatch]);
+		if (isError) {
+			toast.error(message);
+		}
+		dispatch(thunks.getInterviews());
+	}, [isError, message, dispatch]);
+
+	if (isLoading) {
+		return <Spinner />;
+	}
 
 	return (
 		<Fragment>
@@ -33,7 +42,7 @@ const Interviews = () => {
 										type={constants.LIST.COMPANY}
 										serial={index + 1}
 										interview={data}
-										startsAt={data.rounds[data.rounds.length - 1].startTime}
+										startsAt={data.rounds[data.rounds.length - 1].start_time}
 									/>
 								))}
 						</ul>
