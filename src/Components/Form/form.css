@@ -39,17 +39,7 @@
 	font-size: 1rem;
 	cursor: pointer;
 }
-.alert {
-	font-size: 1rem;
-	text-align: center;
-	color: #fff;
-	padding: 1rem;
-}
-.error {
-	color: #e41313;
-	border: 1px solid #e41313;
-}
-.success {
-	color: #0b730b;
-	border: 1px solid #0b730b;
+.mini-btn:hover {
+	color: #daa520;
+	background-color: #222;
 }

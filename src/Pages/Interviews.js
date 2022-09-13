@@ -22,7 +22,7 @@ const Interviews = () => {
 		}
 		dispatch(thunks.getInterviews());
 		dispatch(actions.interviews.reset());
-	}, [isError, message, interviews, dispatch]);
+	}, [isError, message, dispatch]);
 
 	if (isLoading) {
 		return <Spinner />;

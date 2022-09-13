@@ -18,12 +18,13 @@ const Form = () => {
 	const [isReadOnly, setIsReadOnly] = useState(false);
 	const [formState, setFormState] = useState({
 		company: "",
-		role: "Software engineer",
+		role: "",
 		round: "1",
 		date: "",
 		time: "",
 		duration: "",
 	});
+	const { company, role, round, date, time, duration } = formState;
 
 	const changeHandler = (e) => {
 		const { name, value } = e.target;
@@ -62,6 +63,12 @@ const Form = () => {
 
 	const submitHandler = (e) => {
 		e.preventDefault();
+		if (!company.trim().length) return toast.error("Company name is required.");
+		if (!role.trim().length) return toast.error("Role is required.");
+		if (!date.trim().length) return toast.error("Date is required.");
+		if (!time.trim().length) return toast.error("Time is required.");
+		if (!round || round < 1) return toast.error("Round is required.");
+		if (!duration || duration <= 0) return toast.error("Duration is required.");
 		const interviewData = {
 			...formState,
 			startTime: `${formState.date} ${formState.time}`,
@@ -91,14 +98,13 @@ const Form = () => {
 
 	return (
 		<section className="form-box">
-			<div className="alert" hidden></div>
 			<form className="interview-form" onSubmit={submitHandler}>
 				<div>
 					<label htmlFor="company">Company</label>
 					<input
 						id="company"
 						name="company"
-						value={formState.company}
+						value={company}
 						onChange={changeHandler}
 						className="form-control"
 						type="text"
@@ -110,9 +116,10 @@ const Form = () => {
 					<input
 						id="role"
 						name="role"
-						value={formState.role}
+						value={role}
 						onChange={changeHandler}
 						className="form-control"
+						placeholder="Job title, role or position"
 						type="text"
 						readOnly={isReadOnly}
 					/>
@@ -122,7 +129,7 @@ const Form = () => {
 					<select
 						id="round"
 						name="round"
-						value={formState.round}
+						value={round}
 						onChange={changeHandler}
 						className="form-control"
 					>
@@ -135,7 +142,7 @@ const Form = () => {
 						<input
 							id="date"
 							name="date"
-							value={formState.date}
+							value={date}
 							onChange={changeHandler}
 							className="form-control"
 							type="date"
@@ -146,7 +153,7 @@ const Form = () => {
 						<input
 							id="time"
 							name="time"
-							value={formState.time}
+							value={time}
 							onChange={changeHandler}
 							className="form-control"
 							type="time"
@@ -158,9 +165,10 @@ const Form = () => {
 					<input
 						id="duration"
 						name="duration"
-						value={formState.duration}
+						value={duration}
 						onChange={changeHandler}
 						className="form-control"
+						placeholder="0.25 is 15m, 0.5 is 30m, 1 is 1hr"
 						step="0.25"
 						type="number"
 					/>
