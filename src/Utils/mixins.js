@@ -11,8 +11,6 @@ export const formatDateTime = (dateTime = Date.now()) =>
 export const formatDuration = (duration = 0.5) =>
 	`${duration} ${parseFloat(duration) > 1 ? "hrs" : "hr"}`;
 
-export const copyrightYear = () => new Date().getFullYear();
-
 export const dynamicBgColor = (startTime = Date.now()) => {
 	startTime = new Date(startTime).getTime();
 	const dateTime = new Date();
@@ -30,21 +28,6 @@ export const dynamicBgColor = (startTime = Date.now()) => {
 	return constants.PRIORITY.TWO; // future
 };
 
-export const sortDesc = (arr = []) => {
-	if (!arr.length) return;
-
-	// arrange by start date-time desc
-	const sorted = arr.sort((companyA, companyB) => {
-		const lastestRoundOfA = companyA.rounds[companyA.rounds.length - 1];
-		const lastestRoundOfB = companyB.rounds[companyB.rounds.length - 1];
-		return new Date(lastestRoundOfA.startTime) <
-			new Date(lastestRoundOfB.startTime)
-			? 1
-			: -1;
-	});
-	return sorted;
-};
-
 export const findDataById = (arr, id) => {
 	if (!arr || !id) return;
 	return arr.find((data) => parseInt(data.id) === parseInt(id));
@@ -52,7 +35,7 @@ export const findDataById = (arr, id) => {
 
 export const capitalize = (string) => {
 	if (!string) return;
-	let firstChar = string.at(0).toLowerCase();
+	let firstChar = string.at(0);
 	if (firstChar >= "a" && firstChar <= "z") {
 		firstChar = firstChar.toUpperCase();
 		let otherChars = string.slice(1, string.length + 1);
