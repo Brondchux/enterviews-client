@@ -14,6 +14,19 @@ const endInterview = async (interviewData, token) => {
 	return response.data.data;
 };
 
-const interviewServices = { endInterview };
+// Delete interview process service
+const deleteInterview = async (data, token) => {
+	const headers = {
+		"Content-type": "application/json",
+		Authorization: `Bearer ${token}`,
+	};
+	const response = await axios.delete(API_URL, { data, headers });
+	return response.data.data;
+};
+
+const interviewServices = {
+	endInterview,
+	deleteInterview,
+};
 
 export default interviewServices;

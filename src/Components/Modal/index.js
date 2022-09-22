@@ -7,25 +7,26 @@ import "./model.css";
 const Modal = () => {
 	const dispatch = useDispatch();
 	const { options } = useSelector((state) => state.modal);
-	const closeModal = () => {
-		dispatch(actions.modal.setShowModal(false));
-	};
 
 	// Possible functions to be invoked by model
 	const modelFunctionsMap = {
 		[constants.MODAL_ACTIONS.END_INTERVIEW]: ({ interviewId } = "") => {
 			const interviewData = { id: interviewId };
 			dispatch(thunks.endInterview(interviewData));
-			dispatch(actions.modal.setShowModal(false));
 		},
 		[constants.MODAL_ACTIONS.DELETE_INTERVIEW]: ({ interviewId } = "") => {
-			// const interviewData = { id: interviewId };
+			const interviewData = { id: interviewId };
+			dispatch(thunks.deleteInterview(interviewData));
 		},
 	};
 
 	const runProceedFxn = () => {
 		modelFunctionsMap[options.proceedAction](options.proceedData);
-		console.log(JSON.stringify(options, null, 3));
+		dispatch(actions.modal.setShowModal(false));
+	};
+
+	const closeModal = () => {
+		dispatch(actions.modal.setShowModal(false));
 	};
 
 	return (

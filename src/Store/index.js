@@ -3,7 +3,7 @@ import interviewSlice from "./modules/interview";
 import interviewsSlice from "./modules/interviews";
 import modalSlice from "./modules/modal";
 import authSlice from "./modules/auth";
-import { endInterview } from "./modules/interview";
+import { endInterview, deleteInterview } from "./modules/interview";
 import { getInterviews, addInterview } from "./modules/interviews";
 import { signup, signin, signout, account } from "./modules/auth";
 
@@ -15,6 +15,7 @@ export const thunks = {
 	getInterviews,
 	addInterview,
 	endInterview,
+	deleteInterview,
 };
 
 export const actions = {

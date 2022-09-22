@@ -1,7 +1,7 @@
 import "../assets/css//Interview.css";
 import { Fragment, useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { findDataById } from "../Utils/mixins";
 import { actions } from "../Store";
 import { toast } from "react-toastify";
@@ -16,9 +16,10 @@ import Modal from "../Components/Modal";
 const Interview = () => {
 	const { id } = useParams();
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 	const { showModal } = useSelector((state) => state.modal);
 	const { interviews } = useSelector((state) => state.interviews);
-	const { interview, isError, isLoading, message } = useSelector(
+	const { interview, isError, isSuccess, isLoading, message } = useSelector(
 		(state) => state.interview
 	);
 
@@ -36,8 +37,11 @@ const Interview = () => {
 		if (isError) {
 			toast.error(message);
 		}
+		if (isSuccess && !interview) {
+			navigate("/interviews");
+		}
 		dispatch(actions.interview.reset());
-	}, [isError, message, dispatch]);
+	}, [isError, message, isSuccess, interview, navigate, dispatch]);
 
 	const noInterviewFound = (
 		<section className="an-interview">

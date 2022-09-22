@@ -37,6 +37,19 @@ const interviewSlice = createSlice({
 				state.isLoading = false;
 				state.isError = true;
 				state.message = payload;
+			})
+			.addCase(deleteInterview.pending, (state) => {
+				state.isLoading = true;
+			})
+			.addCase(deleteInterview.fulfilled, (state) => {
+				state.isLoading = false;
+				state.isSuccess = true;
+				state.interview = null;
+			})
+			.addCase(deleteInterview.rejected, (state, { payload }) => {
+				state.isLoading = false;
+				state.isError = true;
+				state.message = payload;
 			});
 	},
 });
@@ -48,6 +61,24 @@ export const endInterview = createAsyncThunk(
 		try {
 			const token = thunkAPI.getState().auth.token;
 			return await interviewServices.endInterview(interviewData, token);
+		} catch (err) {
+			const message =
+				(err.response && err.response.data && err.response.data.message) ||
+				err.message ||
+				err.toString();
+
+			return thunkAPI.rejectWithValue(message);
+		}
+	}
+);
+
+// Delete interview process
+export const deleteInterview = createAsyncThunk(
+	"interview/deleteInterview",
+	async (interviewData, thunkAPI) => {
+		try {
+			const token = thunkAPI.getState().auth.token;
+			return await interviewServices.deleteInterview(interviewData, token);
 		} catch (err) {
 			const message =
 				(err.response && err.response.data && err.response.data.message) ||
