@@ -56,7 +56,7 @@ const Interview = () => {
 							<p>Role: {interview.role}</p>
 							<p>
 								Status:{" "}
-								{interview.isStillActive
+								{interview.active
 									? constants.STILL_ACTIVE
 									: constants.NOT_ACTIVE}
 							</p>

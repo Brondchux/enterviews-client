@@ -25,7 +25,7 @@
 				"isCompleted": false
 			}
 		],
-		"isStillActive": true,
+		"active": true,
 		"id": 1950574839922
 	},
 	{
@@ -40,7 +40,7 @@
 				"isCompleted": false
 			}
 		],
-		"isStillActive": true,
+		"active": true,
 		"id": 1854683874506
 	},
 	{
@@ -55,7 +55,7 @@
 				"isCompleted": false
 			}
 		],
-		"isStillActive": true,
+		"active": true,
 		"id": 2859722727067
 	},
 	{
@@ -77,7 +77,7 @@
 				"isCompleted": false
 			}
 		],
-		"isStillActive": true,
+		"active": true,
 		"id": 2033921612423
 	},
 	{
@@ -99,7 +99,7 @@
 				"isCompleted": false
 			}
 		],
-		"isStillActive": true,
+		"active": true,
 		"id": 2025146570720
 	},
 	{
@@ -121,7 +121,7 @@
 				"isCompleted": true
 			}
 		],
-		"isStillActive": true,
+		"active": true,
 		"id": 2521855018387
 	}
 ]
