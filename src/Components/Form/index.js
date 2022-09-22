@@ -84,7 +84,7 @@ const Form = () => {
 
 	useEffect(() => {
 		if (isError) {
-			toast(message);
+			toast.error(message);
 		}
 		if (isSuccess && !interviews) {
 			navigate("/interviews");

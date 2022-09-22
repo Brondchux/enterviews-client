@@ -30,7 +30,7 @@ const Modal = () => {
 
 	return (
 		<Fragment>
-			{options && Object.entries(options).length && (
+			{options && Object.entries(options).length > 0 && (
 				<section className="modal-wrapper" onClick={closeModal}>
 					<div className="modal-body" onClick={(e) => e.stopPropagation()}>
 						<div className="modal-content">

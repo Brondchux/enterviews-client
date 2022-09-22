@@ -4,19 +4,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { findDataById } from "../Utils/mixins";
 import { actions } from "../Store";
+import { toast } from "react-toastify";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import List from "../Components/List";
 import Advanced from "../Components/Advanced";
+import Spinner from "../Components/Spinner";
 import constants from "../Utils/constants";
 import Modal from "../Components/Modal";
 
 const Interview = () => {
 	const { id } = useParams();
 	const dispatch = useDispatch();
-	const interviews = useSelector((state) => state.interviews.interviews);
-	const interview = useSelector((state) => state.interview.interview);
-	const showModal = useSelector((state) => state.modal.showModal);
+	const { showModal } = useSelector((state) => state.modal);
+	const { interviews } = useSelector((state) => state.interviews);
+	const { interview, isError, isLoading, message } = useSelector(
+		(state) => state.interview
+	);
 
 	const fetchInterviewData = useCallback(async () => {
 		const data = await findDataById(interviews, id);
@@ -27,6 +31,13 @@ const Interview = () => {
 	useEffect(() => {
 		fetchInterviewData();
 	}, [fetchInterviewData]);
+
+	useEffect(() => {
+		if (isError) {
+			toast.error(message);
+		}
+		dispatch(actions.interview.reset());
+	}, [isError, message, dispatch]);
 
 	const noInterviewFound = (
 		<section className="an-interview">
@@ -42,6 +53,10 @@ const Interview = () => {
 			</div>
 		</section>
 	);
+
+	if (isLoading) {
+		return <Spinner />;
+	}
 
 	return (
 		<Fragment>
