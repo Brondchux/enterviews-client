@@ -36,6 +36,10 @@ const deleteRound = async (data, token) => {
 	return response.data.data;
 };
 
-const roundServices = { getRounds, completeRound, deleteRound };
+const roundServices = {
+	getRounds,
+	completeRound,
+	deleteRound,
+};
 
 export default roundServices;

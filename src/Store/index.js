@@ -3,10 +3,14 @@ import interviewSlice from "./modules/interview";
 import interviewsSlice from "./modules/interviews";
 import modalSlice from "./modules/modal";
 import authSlice from "./modules/auth";
-import roundsSlice, { completeRound, deleteRound } from "./modules/rounds";
 import { endInterview, deleteInterview } from "./modules/interview";
 import { getInterviews, addInterview } from "./modules/interviews";
 import { signup, signin, signout, account } from "./modules/auth";
+import roundsSlice, {
+	completeRound,
+	deleteRound,
+	getRounds,
+} from "./modules/rounds";
 
 export const thunks = {
 	signup,
@@ -17,6 +21,7 @@ export const thunks = {
 	addInterview,
 	endInterview,
 	deleteInterview,
+	getRounds,
 	deleteRound,
 	completeRound,
 };

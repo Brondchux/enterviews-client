@@ -3,7 +3,7 @@ import { Fragment, useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { findDataById } from "../Utils/mixins";
-import { actions } from "../Store";
+import { actions, thunks } from "../Store";
 import { toast } from "react-toastify";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
@@ -19,10 +19,12 @@ const Interview = () => {
 	const navigate = useNavigate();
 	const { showModal } = useSelector((state) => state.modal);
 	const { interviews } = useSelector((state) => state.interviews);
+	const { rounder } = useSelector((state) => state.rounds);
 	const { interview, isError, isSuccess, isLoading, message } = useSelector(
 		(state) => state.interview
 	);
 
+	// TODO: Revisit me to make sure I can refresh my page via url ID
 	const fetchInterviewData = useCallback(async () => {
 		const data = await findDataById(interviews, id);
 		dispatch(actions.interview.setInterview(data));
@@ -32,6 +34,15 @@ const Interview = () => {
 	useEffect(() => {
 		fetchInterviewData();
 	}, [fetchInterviewData]);
+
+	const fetchInterviewRounds = useCallback(() => {
+		const roundData = { interviewId: id };
+		dispatch(thunks.getRounds(roundData));
+	}, [id, dispatch]);
+
+	useEffect(() => {
+		fetchInterviewRounds();
+	}, [fetchInterviewRounds]);
 
 	useEffect(() => {
 		if (isError) {
@@ -92,9 +103,9 @@ const Interview = () => {
 								)
 							</h3>
 							<ul id="interview-rounds" className="interviews-ul">
-								{interview.rounds &&
-									interview.rounds.length &&
-									interview.rounds.map((round, index) => (
+								{rounder &&
+									rounder.length > 0 &&
+									rounder.map((round, index) => (
 										<List
 											key={index}
 											interviewId={interview.id}
