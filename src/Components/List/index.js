@@ -42,6 +42,17 @@ const List = ({
 		dispatch(actions.modal.setShowModal(true));
 	};
 
+	const deleteHandler = (count, roundId) => {
+		dispatch(
+			actions.modal.setOptions({
+				description: `Are you sure you want to delete round ${count}?`,
+				proceedAction: constants.MODAL_ACTIONS.ROUND_DEL,
+				proceedData: { interviewId, roundId },
+			})
+		);
+		dispatch(actions.modal.setShowModal(true));
+	};
+
 	const roundList = round && interviewId && (
 		<Fragment>
 			<span>Start: {formatDateTime(round.start_time)}</span>
@@ -49,12 +60,20 @@ const List = ({
 			<span>Duration: {formatDuration(round.duration)}</span>
 			<span>Completed: {round.completed ? "Yes" : "No"}</span>
 			{!round.completed && (
-				<button
-					className="mini-btn"
-					onClick={() => macHandler(round.count, round.id)}
-				>
-					{constants.MAC}
-				</button>
+				<section className="round-btns-section">
+					<button
+						className="round-btn round-mac-btn"
+						onClick={() => macHandler(round.count, round.id)}
+					>
+						{constants.ROUND_BTNS.MAC}
+					</button>
+					<button
+						className="round-btn round-del-btn"
+						onClick={() => deleteHandler(round.count, round.id)}
+					>
+						{constants.ROUND_BTNS.DEL}
+					</button>
+				</section>
 			)}
 		</Fragment>
 	);

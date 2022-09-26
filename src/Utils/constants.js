@@ -1,6 +1,5 @@
 const constants = {
 	BRAND: "Enterviews",
-	MAC: "Mark as complete",
 	STILL_ACTIVE: "Interview in process",
 	NOT_ACTIVE: "Interview ended",
 	LS: {
@@ -24,12 +23,17 @@ const constants = {
 	},
 	MODAL_ACTIONS: {
 		ROUND_MAC: "ROUND_MAC",
+		ROUND_DEL: "ROUND_DEL",
 		END_INTERVIEW: "END_INTERVIEW",
 		DELETE_INTERVIEW: "DELETE_INTERVIEW",
 	},
 	AUTH_TYPES: {
 		SIGNIN: "SIGNIN",
 		SIGNUP: "SIGNUP",
+	},
+	ROUND_BTNS: {
+		MAC: "Mark as complete",
+		DEL: "Delete round",
 	},
 	PWD_LENGTH: 8,
 	PWD_MIS_MATCH: "Passwords do not match!",

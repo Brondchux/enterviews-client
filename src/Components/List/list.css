@@ -47,3 +47,32 @@
 .serial-future-line {
 	border-bottom: 2px solid #555 !important;
 }
+.round-btns-section {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 10px;
+}
+.round-btn {
+	border: 1px solid #222;
+	border-radius: 5px;
+	font-size: 1rem;
+	cursor: pointer;
+	padding: 0.5rem;
+}
+.round-mac-btn {
+	color: #fff;
+	background-color: #555;
+}
+.round-mac-btn:hover {
+	color: #daa520;
+	background-color: #222;
+}
+.round-del-btn {
+	color: #e00a0a;
+	border: 1px solid #e00a0a;
+	background-color: #fff;
+}
+.round-del-btn:hover {
+	color: #fff;
+	background-color: #e00a0a;
+}

@@ -33,13 +33,3 @@
 .btn-outline:hover {
 	color: #daa520;
 }
-.mini-btn {
-	border: 1px solid #222;
-	border-radius: 5px;
-	font-size: 1rem;
-	cursor: pointer;
-}
-.mini-btn:hover {
-	color: #daa520;
-	background-color: #222;
-}
