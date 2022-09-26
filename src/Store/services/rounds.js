@@ -20,7 +20,7 @@ const deleteRound = async (data, token) => {
 		"Content-type": "application/json",
 		Authorization: `Bearer ${token}`,
 	};
-	const response = await axios.delete(API_URL, data, headers);
+	const response = await axios.delete(API_URL, { data, headers });
 	return response.data.data;
 };
 

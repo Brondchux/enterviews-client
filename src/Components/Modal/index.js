@@ -21,6 +21,9 @@ const Modal = () => {
 		[constants.MODAL_ACTIONS.ROUND_MAC]: (data = {}) => {
 			dispatch(thunks.completeRound(data));
 		},
+		[constants.MODAL_ACTIONS.ROUND_DEL]: (data = {}) => {
+			dispatch(thunks.deleteRound(data));
+		},
 	};
 
 	const runProceedFxn = () => {
