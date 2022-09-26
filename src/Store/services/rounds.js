@@ -2,6 +2,18 @@ import axios from "axios";
 
 const API_URL = "/api/rounds";
 
+// Fetch interview rounds service
+const getRounds = async ({ interviewId = 0 }, token) => {
+	const config = {
+		headers: {
+			"Content-type": "application/json",
+			Authorization: `Bearer ${token}`,
+		},
+	};
+	const response = await axios.get(`${API_URL}/${interviewId}`, config);
+	return response.data.data;
+};
+
 // Mark as complete service
 const completeRound = async (roundData, token) => {
 	const config = {
@@ -24,9 +36,6 @@ const deleteRound = async (data, token) => {
 	return response.data.data;
 };
 
-const roundServices = {
-	completeRound,
-	deleteRound,
-};
+const roundServices = { getRounds, completeRound, deleteRound };
 
 export default roundServices;

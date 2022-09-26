@@ -16,17 +16,20 @@ const Interviews = () => {
 		(state) => state.interviews
 	);
 
+	useEffect(() => {
+		if (isError) {
+			toast.error(message);
+		}
+		dispatch(actions.interviews.reset());
+	}, [isError, message, dispatch]);
+
 	const downloadInterviews = useCallback(() => {
 		dispatch(thunks.getInterviews());
 	}, [dispatch]);
 
 	useEffect(() => {
-		if (isError) {
-			toast.error(message);
-		}
 		downloadInterviews();
-		dispatch(actions.interviews.reset());
-	}, [isError, message, dispatch, downloadInterviews]);
+	}, [downloadInterviews]);
 
 	if (isLoading) {
 		return <Spinner />;
