@@ -13,9 +13,6 @@ const roundSlice = createSlice({
 	name: "rounds",
 	initialState,
 	reducers: {
-		setRounds(state, action) {
-			state.rounder = action.payload;
-		},
 		reset(state) {
 			state.isError = false;
 			state.isLoading = false;
@@ -41,10 +38,10 @@ const roundSlice = createSlice({
 			.addCase(completeRound.pending, (state) => {
 				state.isLoading = true;
 			})
-			.addCase(completeRound.fulfilled, (state, action) => {
+			.addCase(completeRound.fulfilled, (state) => {
 				state.isLoading = false;
 				state.isSuccess = true;
-				state.rounder = action.payload;
+				state.rounder = null;
 			})
 			.addCase(completeRound.rejected, (state, action) => {
 				state.isLoading = false;
@@ -70,10 +67,10 @@ const roundSlice = createSlice({
 // Fetch interview rounds
 export const getRounds = createAsyncThunk(
 	"rounds/getRounds",
-	async (interviewData, thunkAPI) => {
+	async (roundsData, thunkAPI) => {
 		try {
 			const token = thunkAPI.getState().auth.token;
-			return await roundsServices.getRounds(interviewData, token);
+			return await roundsServices.getRounds(roundsData, token);
 		} catch (err) {
 			const message =
 				(err.response && err.response.data && err.response.data.message) ||
