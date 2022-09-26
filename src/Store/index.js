@@ -3,6 +3,7 @@ import interviewSlice from "./modules/interview";
 import interviewsSlice from "./modules/interviews";
 import modalSlice from "./modules/modal";
 import authSlice from "./modules/auth";
+import roundsSlice, { completeRound, deleteRound } from "./modules/rounds";
 import { endInterview, deleteInterview } from "./modules/interview";
 import { getInterviews, addInterview } from "./modules/interviews";
 import { signup, signin, signout, account } from "./modules/auth";
@@ -16,9 +17,12 @@ export const thunks = {
 	addInterview,
 	endInterview,
 	deleteInterview,
+	deleteRound,
+	completeRound,
 };
 
 export const actions = {
+	rounds: roundsSlice.actions,
 	interview: interviewSlice.actions,
 	interviews: interviewsSlice.actions,
 	modal: modalSlice.actions,
@@ -27,6 +31,7 @@ export const actions = {
 
 export default configureStore({
 	reducer: {
+		rounds: roundsSlice.reducer,
 		interview: interviewSlice.reducer,
 		interviews: interviewsSlice.reducer,
 		modal: modalSlice.reducer,

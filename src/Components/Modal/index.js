@@ -18,11 +18,15 @@ const Modal = () => {
 			const interviewData = { id: interviewId };
 			dispatch(thunks.deleteInterview(interviewData));
 		},
+		[constants.MODAL_ACTIONS.ROUND_MAC]: (data = {}) => {
+			dispatch(thunks.completeRound(data));
+		},
 	};
 
 	const runProceedFxn = () => {
 		modelFunctionsMap[options.proceedAction](options.proceedData);
 		dispatch(actions.modal.setShowModal(false));
+		console.log(JSON.stringify(options, null, 3));
 	};
 
 	const closeModal = () => {

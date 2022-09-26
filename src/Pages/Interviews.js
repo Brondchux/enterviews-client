@@ -1,5 +1,5 @@
 import "../assets/css//Interviews.css";
-import { Fragment, useEffect } from "react";
+import { Fragment, useCallback, useEffect } from "react";
 import List from "../Components/List";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
@@ -16,13 +16,17 @@ const Interviews = () => {
 		(state) => state.interviews
 	);
 
+	const downloadInterviews = useCallback(() => {
+		dispatch(thunks.getInterviews());
+	}, [dispatch]);
+
 	useEffect(() => {
 		if (isError) {
 			toast.error(message);
 		}
-		dispatch(thunks.getInterviews());
+		downloadInterviews();
 		dispatch(actions.interviews.reset());
-	}, [isError, message, dispatch]);
+	}, [isError, message, dispatch, downloadInterviews]);
 
 	if (isLoading) {
 		return <Spinner />;

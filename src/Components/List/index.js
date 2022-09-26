@@ -47,13 +47,15 @@ const List = ({
 			<span>Start: {formatDateTime(round.start_time)}</span>
 			<span>End: {formatDateTime(round.end_time)}</span>
 			<span>Duration: {formatDuration(round.duration)}</span>
-			<span>Completed: {round.isCompleted ? "Yes" : "No"}</span>
-			<button
-				className="mini-btn"
-				onClick={() => macHandler(round.count, round.id)}
-			>
-				{constants.MAC}
-			</button>
+			<span>Completed: {round.completed ? "Yes" : "No"}</span>
+			{!round.completed && (
+				<button
+					className="mini-btn"
+					onClick={() => macHandler(round.count, round.id)}
+				>
+					{constants.MAC}
+				</button>
+			)}
 		</Fragment>
 	);
 
