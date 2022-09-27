@@ -2,14 +2,14 @@ import { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import { thunks } from "../../Store";
+import { actions, thunks } from "../../Store";
 import constants from "../../Utils/constants";
 import List from "../List";
 import Spinner from "../Spinner";
 
 const Rounds = ({ interviewKeyId }) => {
 	const dispatch = useDispatch();
-	const { rounder, isError, isLoading, message } = useSelector(
+	const { rounder, isError, isSuccess, isLoading, message } = useSelector(
 		(state) => state.rounds
 	);
 
@@ -26,13 +26,13 @@ const Rounds = ({ interviewKeyId }) => {
 		if (isError) {
 			toast.error(message);
 		}
-		// if (isSuccess && !rounder) {
-		// 	fetchInterviewRounds();
-		// }
-		// dispatch(actions.rounds.reset());
-	}, [isError, message]);
+		if (isSuccess && !rounder) {
+			fetchInterviewRounds();
+		}
+		dispatch(actions.rounds.reset());
+	}, [isError, message, isSuccess, rounder, fetchInterviewRounds, dispatch]);
 
-	if (isLoading) {
+	if (isLoading || !rounder) {
 		return <Spinner />;
 	}
 

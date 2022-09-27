@@ -2,11 +2,11 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import roundsServices from "../services/rounds";
 
 const initialState = {
+	rounder: null,
 	isError: false,
 	isSuccess: false,
 	isLoading: false,
 	message: "",
-	rounder: null,
 };
 
 const roundSlice = createSlice({
@@ -15,8 +15,8 @@ const roundSlice = createSlice({
 	reducers: {
 		reset(state) {
 			state.isError = false;
-			state.isLoading = false;
 			state.isSuccess = false;
+			state.isLoading = false;
 			state.message = "";
 		},
 	},
