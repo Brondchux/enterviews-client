@@ -14,7 +14,7 @@ const Form = () => {
 		(state) => state.interviews
 	);
 	const { interview } = useSelector((state) => state.interview);
-	const [rounds, setRounds] = useState(null);
+	const { rounder } = useSelector((state) => state.rounds);
 	const [isReadOnly, setIsReadOnly] = useState(false);
 	const [formState, setFormState] = useState({
 		company: "",
@@ -34,22 +34,9 @@ const Form = () => {
 		});
 	};
 
-	const roundOptions = (begin = 1, end = 10) => {
-		const options = [];
-		let i = begin;
-		while (i <= end) {
-			options[i] = <option key={i}>{i}</option>;
-			i++;
-		}
-		setRounds(options);
-	};
-	useEffect(() => roundOptions(), []);
-
-	// TODO: Revisit me as interview.rounds is no longer accurate
 	const populateFields = useCallback(() => {
 		if (!id || !interview) return;
-		const newRoundCount = interview.rounds.length + 1;
-		roundOptions(newRoundCount, newRoundCount);
+		const newRoundCount = id && interview && rounder ? rounder.length + 1 : 1;
 		setIsReadOnly(true);
 		setFormState({
 			company: interview.company,
@@ -59,7 +46,7 @@ const Form = () => {
 			time: "",
 			duration: "",
 		});
-	}, [id, interview]);
+	}, [id, interview, rounder]);
 	useEffect(() => populateFields(), [populateFields]);
 
 	const submitHandler = (e) => {
@@ -127,15 +114,16 @@ const Form = () => {
 				</div>
 				<div>
 					<label htmlFor="round">Round</label>
-					<select
+					<input
 						id="round"
 						name="round"
 						value={round}
 						onChange={changeHandler}
 						className="form-control"
-					>
-						{rounds && rounds}
-					</select>
+						placeholder="Interview round?"
+						type="text"
+						readOnly={true}
+					/>
 				</div>
 				<div className="date-time">
 					<div>
