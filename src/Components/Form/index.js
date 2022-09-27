@@ -14,17 +14,15 @@ const Form = () => {
 		(state) => state.interviews
 	);
 	const { interview } = useSelector((state) => state.interview);
-	const { rounder } = useSelector((state) => state.rounds);
 	const [isReadOnly, setIsReadOnly] = useState(false);
 	const [formState, setFormState] = useState({
 		company: "",
 		role: "",
-		round: "1",
 		date: "",
 		time: "",
 		duration: "",
 	});
-	const { company, role, round, date, time, duration } = formState;
+	const { company, role, date, time, duration } = formState;
 
 	const changeHandler = (e) => {
 		const { name, value } = e.target;
@@ -36,17 +34,15 @@ const Form = () => {
 
 	const populateFields = useCallback(() => {
 		if (!id || !interview) return;
-		const newRoundCount = id && interview && rounder ? rounder.length + 1 : 1;
 		setIsReadOnly(true);
 		setFormState({
 			company: interview.company,
 			role: interview.role,
-			round: newRoundCount,
 			date: "",
 			time: "",
 			duration: "",
 		});
-	}, [id, interview, rounder]);
+	}, [id, interview]);
 	useEffect(() => populateFields(), [populateFields]);
 
 	const submitHandler = (e) => {
@@ -55,7 +51,6 @@ const Form = () => {
 		if (!role.trim().length) return toast.error("Role is required.");
 		if (!date.trim().length) return toast.error("Date is required.");
 		if (!time.trim().length) return toast.error("Time is required.");
-		if (!round || round < 1) return toast.error("Round is required.");
 		if (!duration || duration <= 0) return toast.error("Duration is required.");
 		const interviewData = {
 			...formState,
@@ -113,19 +108,6 @@ const Form = () => {
 						placeholder="Job title, role or position"
 						type="text"
 						readOnly={isReadOnly}
-					/>
-				</div>
-				<div>
-					<label htmlFor="round">Round</label>
-					<input
-						id="round"
-						name="round"
-						value={round}
-						onChange={changeHandler}
-						className="form-control"
-						placeholder="Interview round?"
-						type="text"
-						readOnly={true}
 					/>
 				</div>
 				<div className="date-time">
