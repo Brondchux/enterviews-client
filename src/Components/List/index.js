@@ -81,6 +81,7 @@ const List = ({
 
 	const selectedInterview = (interviewData) => {
 		dispatch(actions.interview.setInterview(interviewData));
+		localStorage.setItem(constants.LS.INTERVIEW, JSON.stringify(interviewData));
 		navigate({ pathname: `/interview/${interviewData.id}` });
 	};
 

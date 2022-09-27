@@ -20,17 +20,6 @@ const Interview = () => {
 		(state) => state.interview
 	);
 
-	// // TODO: Revisit me to make sure I can refresh my page via url ID
-	// const fetchInterviewData = useCallback(async () => {
-	// 	const data = await findDataById(interviews, id);
-	// 	dispatch(actions.interview.setInterview(data));
-	// 	data && localStorage.setItem(constants.LS.INTERVIEW, JSON.stringify(data));
-	// }, [id, interviews, dispatch]);
-
-	// useEffect(() => {
-	// 	fetchInterviewData();
-	// }, [fetchInterviewData]);
-
 	useEffect(() => {
 		if (isError) {
 			toast.error(message);
