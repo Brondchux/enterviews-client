@@ -1,6 +1,6 @@
 import "./list.css";
 import { Fragment, useCallback, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { actions } from "../../Store";
 import constants from "../../Utils/constants";
@@ -19,6 +19,7 @@ const List = ({
 	startsAt = null,
 }) => {
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 	const [colorCode, setColorCode] = useState(constants.PRIORITY.ONE);
 	const colors = {
 		[constants.PRIORITY.THREE]: constants.TIMELINES.PRESENT,
@@ -78,12 +79,20 @@ const List = ({
 		</Fragment>
 	);
 
+	const selectedInterview = (interviewData) => {
+		dispatch(actions.interview.setInterview(interviewData));
+		navigate({ pathname: `/interview/${interviewData.id}` });
+	};
+
 	const companyList = interview && (
 		<Fragment>
-			<p data-id={interview.data} data-company={interview.company}>
-				<Link to={{ pathname: `/interview/${interview.id}` }}>
-					{interview.company}
-				</Link>
+			<p
+				data-company={interview.company}
+				onClick={() => {
+					selectedInterview(interview);
+				}}
+			>
+				{interview.company}
 			</p>
 			<span>{formatDateTime(startsAt)}</span>
 		</Fragment>

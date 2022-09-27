@@ -23,6 +23,7 @@ const roundSlice = createSlice({
 	extraReducers: (builder) => {
 		builder
 			.addCase(getRounds.pending, (state) => {
+				state.rounder = null;
 				state.isLoading = true;
 			})
 			.addCase(getRounds.fulfilled, (state, action) => {
@@ -33,6 +34,7 @@ const roundSlice = createSlice({
 			.addCase(getRounds.rejected, (state, action) => {
 				state.isLoading = false;
 				state.isError = true;
+				state.rounder = null;
 				state.message = action.payload;
 			})
 			.addCase(completeRound.pending, (state) => {

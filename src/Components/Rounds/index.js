@@ -2,21 +2,21 @@ import { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import { actions, thunks } from "../../Store";
+import { thunks } from "../../Store";
 import constants from "../../Utils/constants";
 import List from "../List";
 import Spinner from "../Spinner";
 
-const Rounds = ({ interviewId }) => {
+const Rounds = ({ interviewKeyId }) => {
 	const dispatch = useDispatch();
-	const { rounder, isError, isSuccess, isLoading, message } = useSelector(
+	const { rounder, isError, isLoading, message } = useSelector(
 		(state) => state.rounds
 	);
 
 	const fetchInterviewRounds = useCallback(() => {
-		const roundsData = { interviewId };
+		const roundsData = { interviewId: interviewKeyId };
 		dispatch(thunks.getRounds(roundsData));
-	}, [interviewId, dispatch]);
+	}, [interviewKeyId, dispatch]);
 
 	useEffect(() => {
 		fetchInterviewRounds();
@@ -26,11 +26,11 @@ const Rounds = ({ interviewId }) => {
 		if (isError) {
 			toast.error(message);
 		}
-		if (isSuccess && !rounder) {
-			fetchInterviewRounds();
-		}
-		dispatch(actions.rounds.reset());
-	}, [isError, message, isSuccess, rounder, dispatch, fetchInterviewRounds]);
+		// if (isSuccess && !rounder) {
+		// 	fetchInterviewRounds();
+		// }
+		// dispatch(actions.rounds.reset());
+	}, [isError, message]);
 
 	if (isLoading) {
 		return <Spinner />;
@@ -40,7 +40,10 @@ const Rounds = ({ interviewId }) => {
 		<section>
 			<h3>
 				Rounds - (
-				<Link className="link" to={{ pathname: `/add-rounds/${interviewId}` }}>
+				<Link
+					className="link"
+					to={{ pathname: `/add-rounds/${interviewKeyId}` }}
+				>
 					New round?
 				</Link>
 				)
@@ -51,7 +54,7 @@ const Rounds = ({ interviewId }) => {
 					rounder.map((round, index) => (
 						<List
 							key={index}
-							interviewId={interviewId}
+							interviewId={interviewKeyId}
 							round={round}
 							type={constants.LIST.ROUND}
 						/>

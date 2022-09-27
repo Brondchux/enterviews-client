@@ -1,8 +1,7 @@
 import "../assets/css//Interview.css";
-import { Fragment, useCallback, useEffect } from "react";
+import { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { findDataById } from "../Utils/mixins";
+import { Link, useNavigate } from "react-router-dom";
 import { actions } from "../Store";
 import { toast } from "react-toastify";
 import Header from "../Components/Header";
@@ -14,25 +13,23 @@ import Modal from "../Components/Modal";
 import Rounds from "../Components/Rounds";
 
 const Interview = () => {
-	const { id } = useParams();
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const { showModal } = useSelector((state) => state.modal);
-	const { interviews } = useSelector((state) => state.interviews);
 	const { interview, isError, isSuccess, isLoading, message } = useSelector(
 		(state) => state.interview
 	);
 
-	// TODO: Revisit me to make sure I can refresh my page via url ID
-	const fetchInterviewData = useCallback(async () => {
-		const data = await findDataById(interviews, id);
-		dispatch(actions.interview.setInterview(data));
-		data && localStorage.setItem(constants.LS.INTERVIEW, JSON.stringify(data));
-	}, [id, interviews, dispatch]);
+	// // TODO: Revisit me to make sure I can refresh my page via url ID
+	// const fetchInterviewData = useCallback(async () => {
+	// 	const data = await findDataById(interviews, id);
+	// 	dispatch(actions.interview.setInterview(data));
+	// 	data && localStorage.setItem(constants.LS.INTERVIEW, JSON.stringify(data));
+	// }, [id, interviews, dispatch]);
 
-	useEffect(() => {
-		fetchInterviewData();
-	}, [fetchInterviewData]);
+	// useEffect(() => {
+	// 	fetchInterviewData();
+	// }, [fetchInterviewData]);
 
 	useEffect(() => {
 		if (isError) {
@@ -81,7 +78,7 @@ const Interview = () => {
 									: constants.NOT_ACTIVE}
 							</p>
 						</section>
-						<Rounds interviewId={interview.id} />
+						<Rounds interviewKeyId={interview.id} />
 						<Advanced />
 					</section>
 				)}
