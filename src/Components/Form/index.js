@@ -74,11 +74,14 @@ const Form = () => {
 		if (isError) {
 			toast.error(message);
 		}
-		if (isSuccess && !interviews) {
+		if (isSuccess && id && !interviews) {
+			navigate(`/interview/${id}`);
+		}
+		if (isSuccess && !id && !interviews) {
 			navigate("/interviews");
 		}
 		dispatch(actions.interviews.reset());
-	}, [isError, isSuccess, message, interviews, navigate, dispatch]);
+	}, [id, isError, isSuccess, message, interviews, navigate, dispatch]);
 
 	if (isLoading) {
 		return <Spinner />;
