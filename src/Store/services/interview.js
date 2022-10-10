@@ -1,6 +1,7 @@
 import axios from "axios";
+import constants from "../../Utils/constants";
 
-const API_URL = "/api/interviews";
+const API_URL = `${constants.API_HOST}/api/interviews`;
 
 // End interview process service
 const endInterview = async (interviewData, token) => {

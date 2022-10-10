@@ -1,6 +1,7 @@
 import axios from "axios";
+import constants from "../../Utils/constants";
 
-const API_URL = "/api/rounds";
+const API_URL = `${constants.API_HOST}/api/rounds`;
 
 // Fetch interview rounds service
 const getRounds = async ({ interviewId = 0 }, token) => {
