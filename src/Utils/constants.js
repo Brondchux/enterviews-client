@@ -1,5 +1,4 @@
 const constants = {
-	API_HOST: "https://enterviews-server.herokuapp.com",
 	BRAND: "Enterviews",
 	STILL_ACTIVE: "Interview in process",
 	NOT_ACTIVE: "Interview ended",

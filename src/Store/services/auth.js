@@ -1,7 +1,7 @@
 import axios from "axios";
 import constants from "../../Utils/constants";
 
-const API_URL = `${constants.API_HOST}/api/user`;
+const API_URL = "/api/user";
 
 // Create user account service
 const signup = async (userData) => {

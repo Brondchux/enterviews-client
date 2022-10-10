@@ -12,6 +12,8 @@ import SignUp from "./Pages/SignUp";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Account from "./Pages/Account";
+import axios from "axios";
+axios.defaults.baseURL = "https://enterviews-server.herokuapp.com/";
 
 const App = () => {
 	return (

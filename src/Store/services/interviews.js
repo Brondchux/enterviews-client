@@ -1,7 +1,6 @@
 import axios from "axios";
-import constants from "../../Utils/constants";
 
-const API_URL = `${constants.API_HOST}/api/interviews`;
+const API_URL = "/api/interviews";
 
 // Get user interviews service
 const getInterviews = async (token) => {
