@@ -13,7 +13,10 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Account from "./Pages/Account";
 import axios from "axios";
-axios.defaults.baseURL = "https://enterviews-server.herokuapp.com/";
+import constants from "./Utils/constants";
+axios.defaults.baseURL =
+	process.env.NODE_ENV === constants.ENV.PRD &&
+	process.env.REACT_APP_PRD_API_HOST;
 
 const App = () => {
 	return (

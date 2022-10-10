@@ -37,6 +37,10 @@ const constants = {
 	},
 	PWD_LENGTH: 8,
 	PWD_MIS_MATCH: "Passwords do not match!",
+	ENV: {
+		DEV: "development",
+		PRD: "production",
+	},
 };
 
 export default constants;
