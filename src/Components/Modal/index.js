@@ -29,7 +29,7 @@ const Modal = () => {
 	const runProceedFxn = () => {
 		modelFunctionsMap[options.proceedAction](options.proceedData);
 		dispatch(actions.modal.setShowModal(false));
-		console.log(JSON.stringify(options, null, 3));
+		// TODO: remove - console.log(JSON.stringify(options, null, 3));
 	};
 
 	const closeModal = () => {
