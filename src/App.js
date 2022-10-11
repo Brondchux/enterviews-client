@@ -14,6 +14,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Account from "./Pages/Account";
 import axios from "axios";
 import constants from "./Utils/constants";
+
 axios.defaults.baseURL =
 	process.env.NODE_ENV === constants.ENV.PRD &&
 	process.env.REACT_APP_PRD_API_HOST;
