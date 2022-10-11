@@ -1,19 +1,33 @@
+* {
+	box-sizing: border-box;
+}
 body {
 	margin: 0;
 	padding: 0;
-	box-sizing: border-box;
 	font-size: 16px;
-	font-family: "Courier New", Courier, monospace;
+	font-family: Verdana, Tahoma, sans-serif;
+	color: #555;
 }
 a {
 	color: inherit;
 	text-decoration: none;
 }
+h1 {
+	font-size: 2rem;
+}
+h2 {
+	font-size: 1.5rem;
+}
+h3 {
+	font-size: 1.3rem;
+}
+p {
+	font-size: 1rem;
+	font-family: Geneva, Verdana, sans-serif;
+}
 main {
 	min-height: 80vh;
-	max-width: 1200px;
-	margin: 0 auto;
-	padding: 0 1rem;
+	padding: 1rem;
 }
 input:focus {
 	outline: none !important;

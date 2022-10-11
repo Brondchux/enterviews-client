@@ -1,10 +1,10 @@
+import "./header.css";
 import { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { actions } from "../../Store";
 import constants from "../../Utils/constants";
-import Navbar from "../Navbar";
-import "./header.css";
+import { TiThMenuOutline } from "react-icons/ti";
 
 const Header = () => {
 	const dispatch = useDispatch();
@@ -47,13 +47,18 @@ const Header = () => {
 
 	return (
 		<header>
-			<div className="brand">
-				<Link to={{ pathname: "/" }}>
-					<h1>{constants.BRAND}</h1>
-				</Link>
-				<p>keep track your interviews</p>
-			</div>
-			<Navbar />
+			<section className="header-container">
+				<div className="brand">
+					<Link to={{ pathname: "/" }}>
+						<h1>{constants.BRAND}</h1>
+					</Link>
+				</div>
+				<div className="hamburger">
+					<h1>
+						<TiThMenuOutline />
+					</h1>
+				</div>
+			</section>
 		</header>
 	);
 };

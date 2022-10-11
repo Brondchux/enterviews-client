@@ -1,0 +1,11 @@
+.banner {
+	min-height: 20vh;
+	background-color: #444040;
+	padding: 1rem;
+	display: flex;
+	text-align: left;
+}
+.slogan {
+	margin: auto;
+	color: #fff;
+}
