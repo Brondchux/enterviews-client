@@ -1,8 +1,14 @@
 {
 	"name": "enterviews-client",
+	"homepage": "https://enterviews.gospelchukwu.com/",
 	"version": "0.1.0",
 	"private": true,
 	"proxy": "http://localhost:3001/",
+	"author": {
+		"name": "Gospel Chukwu",
+		"email": "brondchux@gmail.com",
+		"url": "https://github.com/brondchux"
+	},
 	"dependencies": {
 		"@reduxjs/toolkit": "^1.8.4",
 		"@testing-library/jest-dom": "^5.16.5",
