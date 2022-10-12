@@ -1,6 +1,3 @@
-.form-box {
-	grid-column: 2/3;
-}
 .interview-form {
 	background-color: #eee;
 	padding: 15px;
@@ -13,8 +10,7 @@
 }
 .date-time {
 	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	gap: 0.7rem;
+	grid-template-columns: repeat(1, 1fr);
 }
 .btn {
 	background-color: #daa520;
@@ -32,4 +28,14 @@
 }
 .btn-outline:hover {
 	color: #daa520;
+}
+
+@media (min-width: 768px) {
+	.form-box {
+		grid-column: 2/3;
+	}
+	.date-time {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 0.7rem;
+	}
 }
