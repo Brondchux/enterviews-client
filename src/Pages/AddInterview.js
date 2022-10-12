@@ -10,7 +10,7 @@ const AddInterview = () => {
 			<Header />
 			<main>
 				<section className="add-interview-heading">
-					<h2>Yeeeehaaw! Let's add it!!</h2>
+					<h2>Yeehaaw! Let's add it!!</h2>
 				</section>
 				<section className="add-interview-form">
 					<Form />

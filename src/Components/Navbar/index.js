@@ -1,9 +1,12 @@
 import "./navbar.css";
 import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Fragment } from "react";
+import { actions } from "../../Store";
 
 const Navbar = () => {
+	const dispatch = useDispatch();
+	const closeMenu = () => dispatch(actions.modal.setShowMenu(false));
 	const { user } = useSelector((state) => state.auth);
 	const { showMenu } = useSelector((state) => state.modal);
 	const activeClassName = "active";
@@ -69,7 +72,7 @@ const Navbar = () => {
 	return (
 		<Fragment>
 			{showMenu && (
-				<nav>
+				<nav onClick={closeMenu}>
 					{!user && publicNavs}
 					{user && privateNavs}
 				</nav>

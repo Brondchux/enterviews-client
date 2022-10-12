@@ -1,0 +1,15 @@
+.account-links {
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+}
+.account-links div {
+	display: flex;
+	align-items: center;
+}
+.account-links div svg {
+	font-size: 1.5rem;
+}
+.account-links div p {
+	font-size: 1.1rem;
+	padding-left: 1rem;
+}

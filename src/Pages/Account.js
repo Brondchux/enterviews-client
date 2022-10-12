@@ -1,10 +1,14 @@
+import "../assets/css/Account.css";
 import { Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import Footer from "../Components/Footer";
-import Header from "../Components/Header";
 import { actions, thunks } from "../Store";
 import { formatDateTime, capitalize } from "../Utils/mixins";
+import { FaPowerOff } from "react-icons/fa";
+import { ImCalendar } from "react-icons/im";
+import { MdOutlineLibraryAdd } from "react-icons/md";
+import Footer from "../Components/Footer";
+import Header from "../Components/Header";
 
 const Account = () => {
 	const dispatch = useDispatch();
@@ -32,19 +36,30 @@ const Account = () => {
 						</article>
 						<article>
 							<h3>Getting started</h3>
-							<p>
-								<Link to={{ pathname: "/add-interview" }} className="link">
-									Add new interview
-								</Link>
-							</p>
-							<p>
-								<Link to={{ pathname: "/interviews" }} className="link">
-									My interviews
-								</Link>
-							</p>
-							<p className="link" onClick={signoutHandler}>
-								Sign out
-							</p>
+							<article className="account-links">
+								<div>
+									<MdOutlineLibraryAdd />
+									<p>
+										<Link to={{ pathname: "/add-interview" }} className="link">
+											Add new interview
+										</Link>
+									</p>
+								</div>
+								<div>
+									<ImCalendar />
+									<p>
+										<Link to={{ pathname: "/interviews" }} className="link">
+											My interviews
+										</Link>
+									</p>
+								</div>
+								<div>
+									<FaPowerOff />
+									<p className="link" onClick={signoutHandler}>
+										Sign out
+									</p>
+								</div>
+							</article>
 						</article>
 					</section>
 				)}
