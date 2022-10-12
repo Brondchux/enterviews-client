@@ -11,16 +11,19 @@
 	cursor: pointer;
 	display: inline;
 	margin-top: 0;
-	font-size: 1.7rem;
+	font-size: 1.3rem;
 }
 .interview-li span {
-	font-size: 1.2rem;
-	font-weight: 600;
-	margin: 1rem auto;
+	font-size: 1rem;
+	margin: 0.5rem auto;
 	display: block;
+	color: #222;
 }
 .interview-li .content {
 	padding: 0.8rem 1rem;
+}
+.interview-li .content span {
+	padding-bottom: 0.35rem;
 }
 .interview-li .serial {
 	background-color: #daa520;
@@ -31,7 +34,8 @@
 }
 .interview-li .serial span {
 	margin: auto !important;
-	font-size: 3rem !important;
+	font-size: 1.5rem !important;
+	padding: 0.5rem;
 }
 .serial-present {
 	background-color: #0b730b !important;
@@ -49,7 +53,7 @@
 }
 .round-btns-section {
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
+	grid-template-columns: repeat(2, 1fr);
 	gap: 10px;
 }
 .round-btn {
@@ -57,7 +61,7 @@
 	border-radius: 5px;
 	font-size: 1rem;
 	cursor: pointer;
-	padding: 0.5rem;
+	padding: 0.35rem;
 }
 .round-mac-btn {
 	color: #fff;
@@ -75,4 +79,10 @@
 .round-del-btn:hover {
 	color: #fff;
 	background-color: #e00a0a;
+}
+
+@media (min-width: 768px) {
+	.round-btns-section {
+		grid-template-columns: repeat(4, 1fr);
+	}
 }

@@ -1,8 +1,17 @@
+.advanced-heading {
+	color: #e00a0a;
+}
 .advanced-section {
 	margin-bottom: 2rem;
 }
 .advanced-btns {
 	display: grid;
-	grid-template-columns: repeat(6, 1fr);
+	grid-template-columns: repeat(2, 1fr);
 	gap: 1rem;
+}
+
+@media (min-width: 768px) {
+	.advanced-btns {
+		grid-template-columns: repeat(4, 1fr);
+	}
 }

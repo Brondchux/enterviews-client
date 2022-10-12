@@ -1,5 +1,4 @@
 .search-box {
-	margin-bottom: 1rem;
 	display: grid;
 	grid-template-columns: repeat(1, 12fr);
 }

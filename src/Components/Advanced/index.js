@@ -29,8 +29,11 @@ const Advanced = () => {
 
 	return (
 		<section className="advanced-section">
-			<h4>Advanced zone</h4>
-			<p>Any action executed here is permanent and cannot be undone!</p>
+			<h3 className="advanced-heading">Advanced zone</h3>
+			<p>
+				Excecuting any of the action buttons below is permanent and cannot be
+				undone! Caution is advised.
+			</p>
 			<div className="advanced-btns">
 				<button className="form-control btn" onClick={endedHandler}>
 					Interview ended

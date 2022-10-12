@@ -57,7 +57,7 @@ const Interview = () => {
 				{showModal && <Modal />}
 				{interview && (
 					<section className="an-interview">
-						<section id="interview-details">
+						<article>
 							<h2>{interview.company}</h2>
 							<p>Role: {interview.role}</p>
 							<p>
@@ -66,7 +66,7 @@ const Interview = () => {
 									? constants.STILL_ACTIVE
 									: constants.NOT_ACTIVE}
 							</p>
-						</section>
+						</article>
 						<Rounds interviewKeyId={interview.id} />
 						<Advanced />
 					</section>
