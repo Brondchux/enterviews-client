@@ -1,9 +1,11 @@
 import "./navbar.css";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { Fragment } from "react";
 
 const Navbar = () => {
 	const { user } = useSelector((state) => state.auth);
+	const { showMenu } = useSelector((state) => state.modal);
 	const activeClassName = "active";
 
 	const publicNavs = (
@@ -65,10 +67,14 @@ const Navbar = () => {
 	);
 
 	return (
-		<nav>
-			{!user && publicNavs}
-			{user && privateNavs}
-		</nav>
+		<Fragment>
+			{showMenu && (
+				<nav>
+					{!user && publicNavs}
+					{user && privateNavs}
+				</nav>
+			)}
+		</Fragment>
 	);
 };
 export default Navbar;

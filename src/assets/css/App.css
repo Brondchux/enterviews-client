@@ -51,6 +51,6 @@ input:focus {
 }
 .link {
 	color: #daa520;
-	font-weight: 600;
+	font-weight: bold;
 	cursor: pointer;
 }

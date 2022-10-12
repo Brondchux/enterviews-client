@@ -1,14 +1,17 @@
 import "./header.css";
-import { useCallback, useEffect } from "react";
+import { Fragment, useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
+import { TiThMenuOutline } from "react-icons/ti";
+import { GrClose } from "react-icons/gr";
 import { actions } from "../../Store";
 import constants from "../../Utils/constants";
-import { TiThMenuOutline } from "react-icons/ti";
+import Navbar from "../Navbar";
 
 const Header = () => {
 	const dispatch = useDispatch();
-	const interview = useSelector((state) => state.interview.interview);
+	const { interview } = useSelector((state) => state.interview);
+	const { showMenu } = useSelector((state) => state.modal);
 	const { id } = useParams();
 
 	// Get interview data from local storage if any
@@ -45,21 +48,32 @@ const Header = () => {
 		fetchUserFromLocalStorage();
 	}, [fetchUserFromLocalStorage]);
 
+	const toggleMenu = (visibility) => {
+		dispatch(actions.modal.setShowMenu(visibility));
+	};
+
 	return (
-		<header>
-			<section className="header-container">
-				<div className="brand">
-					<Link to={{ pathname: "/" }}>
-						<h1>{constants.BRAND}</h1>
-					</Link>
-				</div>
-				<div className="hamburger">
-					<h1>
-						<TiThMenuOutline />
-					</h1>
-				</div>
-			</section>
-		</header>
+		<Fragment>
+			<header>
+				<section className="header-container">
+					<div className="brand">
+						<Link to={{ pathname: "/" }}>
+							<h1>{constants.BRAND}</h1>
+						</Link>
+					</div>
+					<div className="hamburger">
+						<h1>
+							{showMenu ? (
+								<GrClose onClick={() => toggleMenu(false)} />
+							) : (
+								<TiThMenuOutline onClick={() => toggleMenu(true)} />
+							)}
+						</h1>
+					</div>
+				</section>
+			</header>
+			<Navbar />
+		</Fragment>
 	);
 };
 
