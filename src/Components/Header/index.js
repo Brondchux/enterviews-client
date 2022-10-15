@@ -58,7 +58,8 @@ const Header = () => {
 				<section className="header-container">
 					<div className="brand">
 						<Link to={{ pathname: "/" }}>
-							<h1>{constants.BRAND}</h1>
+							{/* <h1>{constants.BRAND}</h1> */}
+							<h1>EnterLive</h1>
 						</Link>
 					</div>
 					<div className="hamburger">
