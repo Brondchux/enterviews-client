@@ -21,7 +21,7 @@ jobs:
           npm install
           npm run build
         env:
-          REACT_APP_PRD_API_HOST: https://enterviews-server.herokuapp.com/
+          REACT_APP_PRD_API_HOST: https://api.enterviews.gospelchukwu.com/
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.3.2
